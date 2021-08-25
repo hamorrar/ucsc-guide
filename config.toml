@@ -55,16 +55,16 @@ anchor = "smart"
 # Additional menu items
 
 [[menu.main]]
-    name = "Example Site"
+    name = "The Guide"
     weight = 40
-    url = "https://example.docsy.dev"
-    pre = "<i class='fas fa-laptop-code'></i>"
+    url = "docs/"
+    pre = "<i class='fas fa-map'></i>"
 [[menu.main]]
     name = "GitHub"
     weight = 50
-    url = "https://github.com/google/docsy/"
+    url = "https://github.com/hamorrar/ucsc-guide"
     pre = "<i class='fab fa-github'></i>"
-    post = "<span class='alert'>New!</span>" 
+    #post = "<span class='alert'>New!</span>" 
 
 [services]
 [services.googleAnalytics]
@@ -76,7 +76,7 @@ anchor = "smart"
 [languages]
 [languages.en]
 title = "Unofficial UCSC Guide"
-description = "Docsy does docs"
+description = "Student guide"
 languageName ="English"
 # Weight used for sorting.
 weight = 1
@@ -109,16 +109,16 @@ archived_version = false
 # The version number for the version of the docs represented in this doc set.
 # Used in the "version-banner" partial to display a version number for the 
 # current doc set.
-version = "0.0"
+#version = "0.0"
 
 # A link to latest version of the docs. Used in the "version-banner" partial to
 # point people to the main doc site.
-url_latest_version = "https://example.com"
+#url_latest_version = "https://example.com"
 
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
 github_repo = "https://github.com/google/docsy"
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
-github_project_repo = "https://github.com/google/docsy"
+#github_project_repo = "https://github.com/google/docsy"
 
 # Specify a value here if your content directory is not in your repo's root directory
 github_subdir = "userguide"
@@ -126,10 +126,10 @@ github_subdir = "userguide"
 time_format_blog = "Monday, January 02, 2006"
 time_format_default = "January 2, 2006"
 # Sections to publish in the main RSS feed.
-rss_sections = ["blog"]
+#rss_sections = ["blog"]
 
 # Google Custom Search Engine ID. Remove or comment out to disable search.
-# gcs_engine_id = "011217106833237091527:la2vtv2emlw"
+gcs_engine_id = "011217106833237091527:la2vtv2emlw"
 
 # Enable Algolia DocSearch
 algolia_docsearch = false
@@ -175,31 +175,17 @@ enable = false
 [params.links]
 # End user relevant links. These will show up on left side of footer and in the community page if you have one.
 [[params.links.user]]
-	name ="GitHub Discussions"
-	url = "https://github.com/google/docsy/discussions"
+	name ="GitHub"
+	url = "https://github.com/hamorrar/ucsc-guide"
 	icon = "fab fa-github"
-        desc = "Discussion and help from your fellow users"
-[[params.links.user]]
-	name = "User mailing list"
-	url = "https://groups.google.com/forum/#!forum/docsy-users"
-	icon = "fa fa-envelope"
-        desc = "Sign up for Docsy announcements"
-[[params.links.user]]
-	name ="Twitter"
-	url = "https://twitter.com/docsydocs"
-	icon = "fab fa-twitter"
-        desc = "Follow us on Twitter to get the latest news!"
-[[params.links.user]]
-	name = "Stack Overflow"
-	url = "https://stackoverflow.com/questions/tagged/docsy"
-	icon = "fab fa-stack-overflow"
-        desc = "Practical questions and curated answers"
+        desc = "View the source code and contribute!"
+
 # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
-[[params.links.developer]]
-	name = "GitHub"
-	url = "https://github.com/google/docsy"
-	icon = "fab fa-github"
-        desc = "Development takes place here!"
+# [[params.links.developer]]
+#	name = "GitHub"
+#	url = "https://github.com/google/docsy"
+#	icon = "fab fa-github"
+#        desc = "Development takes place here!"
 # [[params.links.developer]]
 	# name = "Slack"
 	# url = "https://example.org/slack"
