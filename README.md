@@ -38,9 +38,9 @@
 - [ ] Classical Studies
 - [ ] Cognitive Science
 - [ ] Community Studies
-- [ x ] Computer Engineering
-- [ x ] Computer Science
-- [ x ] Computer Science: Computer Game Design
+- [x] Computer Engineering
+- [x] Computer Science
+- [x] Computer Science: Computer Game Design
 - [ ] Critical Race and Ethnic Studies
 - [ ] Earth Sciences
 - [ ] Ecology and Evolution
@@ -78,10 +78,10 @@
 - [ ] Prelaw*
 - [ ] Premedicine*
 - [ ] Psychology
-- [ x ] Robotics Engineering
+- [x] Robotics Engineering
 - [ ] Science Education
 - [ ] Sociology
 - [ ] Spanish Studies
-- [ x ] Technology and Information Management
+- [x] Technology and Information Management
 - [ ] Theater Arts
 - [ ] Writing*
