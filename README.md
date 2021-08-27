@@ -85,3 +85,8 @@
 - [x] Technology and Information Management
 - [ ] Theater Arts
 - [ ] Writing*
+
+## To add a new content file with the archetype set up:
+``hugo new docs/name_of_file.md`` 
+### With a subdirectory to keep things organized:
+``hugo new docs/folder_name_in_docs/name_of_file.md``
