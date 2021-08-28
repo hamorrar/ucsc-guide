@@ -16,6 +16,13 @@ If there's something you'd like to see in The Guide (or if you've found somethin
 
 ### For those experienced with programming: Create a Pull Request and Preview Locally
 Navigate to the root of the repository in your terminal and type in ``hugo serve``. The website will be hosted locally at ``http://localhost:1313/ucsc-guide`` for you to preview your changes in the browser. Continue with the usual GitHub workflow to edit files, commit them, push the changes up to your fork, and create a pull request. For this project, most changes will be in ``./content/en/docs/``. For more information on how to contribute, check out [Open Source Guides](https://opensource.guide/how-to-contribute/). Please follow similar writing style in new posts.
+Steps to contribute:
+1. Fork the repository.
+1. Clone your fork to your machine.
+1. Create or checkout an/the appropriate branch.
+1. Commit your changes.
+1. Push to your fork of the repo.
+1. Make a Pull Request for review.
 
 ### Code reviews
 Submissions will be reviewed by at least one person (Hilal). We use GitHub pull requests for this purpose. Consult [GitHub Help](https://help.github.com/articles/about-pull-requests/) for more information on using pull requests.
