@@ -26,7 +26,7 @@ Steps to contribute:
 
 ### Initial setup
 The guide uses the [extended version of hugo](https://github.com/gohugoio/hugo/releases) with the [docsy theme](https://www.docsy.dev/docs/getting-started/). The first time setup has a couple of extra steps.
-1. Use the recursive tag when cloning your fork so that all the submodules are also downloaded: `git clone --recrusive git@github.com:your-username/ucsc-guide.git`
+1. Use the recursive tag when cloning your fork so that all the submodules are also downloaded: `git clone --recursive git@github.com:your-username/ucsc-guide.git`
 1. cd into the directory and install all the dependencies. `npm install`
 1. Use the `hugo server` command to start the server.
 
