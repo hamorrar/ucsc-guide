@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "autoprefixer": "^10.3.3",
+    "hugo-extended": "^0.87.0",
+    "install": "^0.13.0",
+    "npm": "^7.21.1",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1"
+  }
+}
