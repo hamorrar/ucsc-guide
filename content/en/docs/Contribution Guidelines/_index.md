@@ -6,6 +6,8 @@ description: >
   How to contribute to the Unofficial UCSC Guide
 ---
 
+Hello and thank you for wanting to contribute to the project! All experience levels are welcome! Please take a look at ``./HELPWANTED.md`` to see items that are outside of the current team's expertise that need help to expand the scope of the project.
+
 The Unofficial UCSC Student Guide is an open source project and welcome to patches, contributions, and improvements!
 
 ## Contributing to The Unofficial UCSC Student Guide
