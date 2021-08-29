@@ -24,6 +24,12 @@ Steps to contribute:
 1. Push to your fork of the repo.
 1. Make a Pull Request for review.
 
+### Initial setup
+The guide uses the [extended version of hugo](https://github.com/gohugoio/hugo/releases) with the [docsy theme](https://www.docsy.dev/docs/getting-started/). The first time setup has a couple of extra steps.
+1. Use the recursive tag when cloning your fork so that all the submodules are also downloaded: `git clone --recrusive git@github.com:your-username/ucsc-guide.git`
+1. cd into the directory and install all the dependencies. `npm install`
+1. Use the `hugo server` command to start the server.
+
 ### Code reviews
 Submissions will be reviewed by at least one person (Hilal). We use GitHub pull requests for this purpose. Consult [GitHub Help](https://help.github.com/articles/about-pull-requests/) for more information on using pull requests.
 
