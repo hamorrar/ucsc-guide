@@ -12,7 +12,7 @@ This project is intendent to be an unofficial comprehensive guide for prospectiv
 
 The Guide to the Guide has similar information and is located in The Guide [Landing Page](content/en/docs/_index.md).
 
-Please see [Contribution Guidelines](content/en/docs/Contribution%20Guidelines/_index.md) for steps on how to do the initial set up and contribute. Please see [Help Wanted](./HELPWANTED.md) to see which sections of the guide still need additional attention and contributions.
+Please see [Contribution Guidelines](content/en/docs/Contribution%20Guidelines/_index.md) for steps on how to do the initial set up and contribute. Please see [Help Wanted](./HELPWANTED.md) for a list of which features of the site still need additional attention and contributions. If you think of something that is not on this list that should be, please open an issue or make a pull request with additions to the list.
 
 ---
 
