@@ -1,0 +1,9 @@
+---
+title: "University Town Center"
+linkTitle: "University Town Center"
+weight: 1
+icon:
+draft: false
+description: >
+  Off Campus but through UCSC housing in downtown Santa Cruz.
+---

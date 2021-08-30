@@ -1,8 +1,7 @@
 ---
 title: "Off Campus Housing"
 linkTitle: "Off Campus Housing"
-weight: 1
-draft: false
+weight: 3
 description: >
-  How and when to secure a house off campus.
+  Your guide to off campus housing.
 ---
