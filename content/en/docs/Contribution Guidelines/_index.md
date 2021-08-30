@@ -47,7 +47,7 @@ Submissions will be reviewed by at least one person (Hilal). We use GitHub pull 
 ---
 
 ### Code of Conduct
-This project follows the[Contributor Covenant Code of Conduct](./CODE_OF_CONDUCT.md).
+This project follows the [Contributor Covenant Code of Conduct](./CODE_OF_CONDUCT.md).
 
 ### License
 By contributing, you agree that your contributions will be licensed under its GNU General Public License v3.0.

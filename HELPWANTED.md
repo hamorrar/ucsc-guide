@@ -159,6 +159,7 @@
     - [ ] Dining Hall guide
     - [ ] Study spots
     - [ ] Scrape Rate My Professors?
+    - [ ] Extra-curriculars and sports
 
 </details>
 
