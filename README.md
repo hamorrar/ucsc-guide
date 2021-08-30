@@ -22,6 +22,18 @@ For quick and easy contact with me and the rest of the team, please join the pro
 
 ---
 
+## Project Philosophy
+
+I believe that we can improve our current circumstances if we pay it forward. I love to help people and be in a position of mentorship to teach people what I know and what I wish I knew.
+
+---
+
+## Project Scope
+
+The project is indended to encompass every aspect of being a student at UCSC with the hopes of other schools following these footsteps and making a similar guide for their school. 
+
+---
+
 ## Notes to not forget how to do something
 
 ### To add a new content file with the archetype set up:
