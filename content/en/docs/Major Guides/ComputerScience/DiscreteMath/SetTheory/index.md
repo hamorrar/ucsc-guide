@@ -104,11 +104,11 @@ Let $A = \\{1, 2, 3, 4\\}$ and let $B = \\{1, 2, 3, 4, 5, 6, 7, 8\\}$. In this c
 Let $A = \\{1, 2, 3, 4\\}$ and let $B = \\{1, 2, 3, 4\\}$. In this case, $A \subseteq B$ because all of the elements in set $A$ can be found in set $B$ and the two sets happen to be the same set. That is how it is written, but when it is read/spoken, you say "(set) $A$ is a subset of (set) $B$".
 
 ### Visually 
-<!-- <div align="center" width="100" height="100"> -->
 {{< imgproc subset Fill "400x450" >}}
 A visual example of subsets and proper subsets
 {{< /imgproc >}}
-<!-- </div> -->
+
+(Click <a href="subset.png">here</a> to download the image if you want to save it for safe keeping.)
 
 > Note: The $U$ in the top left corner stands for the "universive of discourse". You can think of this as the "domain" of the problem, where the universe has all possible values in a given problem.
 
@@ -175,5 +175,7 @@ Let the universe $U = \\{1, 2, 3, 4, 5, 6\\}$. Let $A = \\{1, 2, 3\\}$. Let $B =
 {{< imgproc set_operations Fill "400x460" >}}
 A visual example of subsets and proper subsets
 {{< /imgproc >}}
+
+(Click <a href="set_operations.png">here</a> to download the image if you want to save it for safe keeping.)
 
 > Note: Venn Diagrams are **incredibly** useful to visualize some of the set operations in more complicated problems that involve more than 2 simple, small sets. So if you are having trouble wrapping your head around a problem or operation when solving a problem, draw it out!

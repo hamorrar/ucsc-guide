@@ -15,11 +15,11 @@ description: >
 # Logic
 The knowledge you gain about logic from Discrete Math (CSE 16) and Computer Systems and Assembly Language (CSE 12) will be some of the most commonly used skills in your career because of how frequently we use conditional statements and try to simplify them in code.
 
-## Implication
-
-## Truth tables
-
-## define proposition
+## Definitions
+- Bit: a bit is a binary value that is a 0 or a 1. Just one, not both, and nothing in between.
+- Binary: a number system used in computer science that has only the numbers 0 and 1.
+- Boolean: only has the value of True or False. Just one, not both, and nothing in between.
+- Proposition: a logical expression that can be evalutated to a True or False value.
 
 ## **Logic Gates**
 This is one of the most common concepts you will come across when doing any programming. So, you will eventually memorize these, if you have not seen them before just from how often you will need to use them. All of the following gates are boolean/binary operations, which means that the inputs and outputs can only be True (1) or False (0) and nothing else and nothing in between.
@@ -81,6 +81,8 @@ Here is the visual for all of the logic gates described above. Now let us see ho
 {{< imgproc gates_truth_tables Fill "590x290" >}}
 A visual guide to the common logic gates.
 {{< /imgproc >}}
+
+(Click <a href="gates_truth_tables.jpg">here</a> to download the image if you want to save it for safe keeping.)
 
 The $A$ and $B$ on the left columns are example inputs to the gate. Remember these can only be boolean/binary True (1)/False (0). They can the results of previously evaluated expression or a simple 1 or 0 as you see in the tables.
 
