@@ -23,11 +23,14 @@ If there's something you'd like to see in The Guide (or if you've found somethin
 #### **Initial Setup**
 The guide uses the [extended version of hugo](https://github.com/gohugoio/hugo/releases) with the [Docsy theme](https://www.docsy.dev/docs/getting-started/).
 
+1. Install Git.
+1. Install Node (and its dependencies if on Windows).
+1. Download and install the extended version of Hugo (linked above).
 1. Fork the repository on GitHub.
-1. Use the recursive tag when cloning your fork so that all the submodules are also downloaded: `git clone --recursive git@github.com:your-username/ucsc-guide.git`
+1. Use the recursive tag when cloning your fork so that all the submodules are also downloaded: ``git clone --recursive git@github.com:your-username/ucsc-guide.git``
 1. ``cd ucsc-guide`` to navigate into the project.
 1. Install all the dependencies: `npm install`
-1. Use the `hugo serve` command to start the server.
+1. Use the `hugo serve` or ``hugo server`` command to start the server.
 1. Open a browser and go to ``https://localhost:1313/ucsc-guide``.
 
 #### **Notes for Hugo Development**
