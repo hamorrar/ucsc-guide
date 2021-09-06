@@ -11,6 +11,9 @@ resources:
 - src: "**logic_laws*.png"
   params:
     byLine: "Diagram: math.stackexchange.com"
+- src: "**rules_of_inference*.png"
+  params:
+    byLine: "Diagram: skedsoft.com"
 description: >
   Introduction to Logic.
 ---
@@ -99,7 +102,7 @@ Now, look at the table one row at a time. Those two inputs get that gate operati
 This handout will be your best friend when working with logical expressions/equations that you need to evaluate or simplify. I will explain one rule on the handout so you know how to read and use it.
 
 {{< imgproc logic_laws Fill "871x729" >}}
-A visual guide to the common logic gates.
+A reference chart for the laws of logic.
 {{< /imgproc >}}
 
 (Click <a href="logic_laws.jpg">here</a> to download the image if you want to save it for safe keeping.)
@@ -107,7 +110,7 @@ A visual guide to the common logic gates.
 ### Notation in the Logic Laws
 The **T** and **F** stand for True and False, respectively. The $p$, $q$, and $r$ used in the diagram are just variables that have boolean values. They can stand for a single variable in an equation or a piece of an expression (ex. $p$ can just be a variable in the equation as $p$ itself like how you can have $x$ in an expression in Calculus OR it can be representative for something bigger than a single variable like how you can have $x = (a + b/2)$ in Calculus). The $\equiv$ symbol means "logically equivalent" (i.e. equal to). The $\rightarrow$ symbol is called "the arrow of implication" read in an expression as "implies". So $p \rightarrow q$ is read aloud as "$p$ implies $q$".
 
-> Note: The first one in Table 7 is called "Definition of Implication" and the first one in Table 8 is called "Definition of Equivalence".
+> Note: The first one in Table 7 is called "Definition of Implication" and the first one in Table 8 is called "Definition of Equivalence/Biconditional".
 
 ---
 
@@ -125,7 +128,14 @@ For the first Commutative Law, it says (in English): "the (truth) value of $p$ O
 
 ---
 
-## rules of inference
+## Rules of Inference
+This handout will be your best friend when doing some more formal boolean algebra proofs (see the Proofs section here). Like the previous handout, I will explain one rule from this one so you know how to read and use it when you have a formal proof to solve.
+
+{{< imgproc logic_laws Fill "871x729" >}}
+A reference chart for the rules of inference.
+{{< /imgproc >}}
+
+(Click <a href="rules_of_inference.png">here</a> to download the image if you want to save it for safe keeping.)
 
 
 
