@@ -128,7 +128,7 @@ For the first Commutative Law, it says (in English): "the (truth) value of $p$ O
 
 ---
 
-## Rules of Inference
+## **Rules of Inference**
 This handout will be your best friend when doing some more formal boolean algebra proofs (see the Proofs section here). Like the previous handout, I will explain one rule from this one so you know how to read and use it when you have a formal proof to solve.
 
 {{< imgproc logic_laws Fill "871x729" >}}
@@ -162,7 +162,7 @@ Given: $(p \land q) \rightarrow r$, $p \rightarrow p$, $q$. Prove $r$.
     <td>Hypothesis 1</td>
   </tr>
   <tr>
-    <td>2. $p \rightarrow p$ </td>
+    <td>2. $q \rightarrow p$ </td>
     <td>Hypothesis 2</td>
   </tr>
   <tr>
@@ -185,23 +185,14 @@ Given: $(p \land q) \rightarrow r$, $p \rightarrow p$, $q$. Prove $r$.
 
 You are given three "hypotheses", which are the expressions that are given to you to use to solve for $r$. You are trying to derive $r$ from these three hypotheses. I like to list out the given hypotheses first, so they are there when I want to use them later, but you can write them down you need them as you go through the proof too.
 
+Now to get to line 4, I look at the rules chart and I see what kind of rules I can apply to any previous lines and see if that gets me anything that can be useful. In this case, I see that Modus Ponens says if you have a line that says $p$ and a line that says $p \rightarrow q$, you can get $q$ as a result. I know the letters are a bit off but that is okay as long as you keep it consistent, you can make a substitution, so you can temporarily think of the $p$ in the proof as the $q$ in the chart and vice versa.
 
+The logic behind Modus Ponens applied to line 4 is that if you have the value of $q$ in line 3 and you have the expression that says $q$ implies the value of $p$, then you can use $q$ you have to get the value of $p$. I think of this one as "unlocking". I need to get a $q$ because I have something that tells me that $q$ "unlocks" a new value that I need, which is $p$.
 
+Put into a more concrete example, let's say $q =$ it is raining and $p =$ get an umbrella. Then you have a line that says $q \rightarrow p$ (i.e "if it is raining, then get an umbrella). You can observe that is raining, so we have established $q$ to be True (which is what line 3 represents in the proof). We have a statement (the implication arrow) that says what to do if it is raining, so we can conclude $p$ from that, which is to get an umbrella.
 
+In line 5 of the proof, this is using the Conjunction rule, which allows you to combine any expressions in the proof so far with an AND ($\land$) between them. In this case, I see that it would helpful to do that because Hypothesis 1 on line says that if you have $p \land q$, you can get $r$, which is what we need.
 
+Finally, I apply Modus Ponens again to lines 1 and 5 to get $r$ from $p \land q$ and $(p \land q) \rightarrow r$.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+That's it! That was a walk through of the smallest proof I could find in my notebook! Congratulations on your first mathematical proof!
