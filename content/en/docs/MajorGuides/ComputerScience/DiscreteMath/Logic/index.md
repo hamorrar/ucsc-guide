@@ -137,7 +137,53 @@ A reference chart for the rules of inference.
 
 (Click <a href="rules_of_inference.png">here</a> to download the image if you want to save it for safe keeping.)
 
+### Notation in the Rules of Inference
+The $\lnot$ symbol is another way is representing a negation/inversion. The $\therefore$ symbol is called "therefore" and means therefore, you can think of it as an equal sign for now. It will make more sense in the example below. That is all the *new* notation in the handout! The rest should be explained in previous parts of the guide!
 
+### Formal Logic Proof
+Before we get to the example, you need to be familiar with what is and how to make a formal proof with the Rules of Inference. In general, these are made with two columns, left side has the boolean expressions that you are applying the Rules of Inference to and then the result and the right side as the name of the rule that you used to get to that result. A few rules and then the example to tie it all together:
+1. Two columns: left has the actual boolean expressions, right has the name of the the rule you applied and the line numbers for the expressions involved.
+1. Number each line starting from 1.
+
+I know it is annoying to always "show your work", but it is easy to get lost or make a small mistake in the proof and then the answer is off or you cannot get to the correct answer. There are many ways to make a proof for a given problem, so these rules are in place to make it clear to the reader *how* you solved it and to yourself to follow your process to easily backtrack if something went wrong. Believe me, it is a time saver.
+
+### Rules of Inference Example
+I think the easiest way to understand how to use and read this chart is by making a small proof and walking you through my thought process! I will put the proof up first then explain it under.
+
+Given: $(p \land q) \rightarrow r$, $p \rightarrow p$, $q$. Prove $r$.
+
+ <table>
+  <tr>
+    <th>Expressions</th>
+    <th>Reasoning</th>
+  </tr>
+  <tr>
+    <td>1. $(p \land q) \rightarrow r$ </td>
+    <td>Hypothesis 1</td>
+  </tr>
+  <tr>
+    <td>2. $p \rightarrow p$ </td>
+    <td>Hypothesis 2</td>
+  </tr>
+  <tr>
+    <td>3. $q$ </td>
+    <td>Hypothesis 3</td>
+  </tr>
+  <tr>
+    <td>4. $p$ </td>
+    <td>Modus Ponens, lines 2 and 3</td>
+  </tr>
+  <tr>
+    <td>5. $p \land q$ </td>
+    <td>Conjunction, lines 3 and 4</td>
+  </tr>
+  <tr>
+    <td>6. $r$ </td>
+    <td>Modus Ponens, lines 1 and 5</td>
+  </tr>
+</table> 
+
+You are given three "hypotheses", which are the expressions that are given to you to use to solve for $r$. You are trying to derive $r$ from these three hypotheses. I like to list out the given hypotheses first, so they are there when I want to use them later, but you can write them down you need them as you go through the proof too.
 
 
 
