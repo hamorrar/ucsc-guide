@@ -4,6 +4,7 @@ linkTitle: "Proofs"
 weight: 1
 icon:
 draft: false
+resources:
 - src: "**rules_of_inference*.png"
   params:
     byLine: "Diagram: skedsoft.com"
@@ -105,7 +106,7 @@ Contrapositive: Prove that if $n$ is odd, then $n^2$ is odd.
 ## **Rules of Inference**
 This handout will be your best friend when doing some more formal boolean algebra proofs (see the Proofs section here). Like the previous handout, I will explain one rule from this one so you know how to read and use it when you have a formal proof to solve.
 
-{{< imgproc logic_laws Fill "871x729" >}}
+{{< imgproc rules_of_inference Fill "538x591" >}}
 A reference chart for the rules of inference.
 {{< /imgproc >}}
 
