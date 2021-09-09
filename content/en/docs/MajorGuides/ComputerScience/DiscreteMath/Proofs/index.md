@@ -12,15 +12,36 @@ description: >
 ---
 
 # Proofs
-The proof building 
+The proof building skills you gain from this class will be foundational for your success in CSE 102. They may look intimidating but the most comforting advice I have received from my teachers and tutors is that notation is half the problem. Once you work your way through the notations in the problem, you can start to understand what you are looking at and think of approaches to solutions. The following are just previews into common proof techniques from CSE 16 and 102.
+
+> Note: Sometimes professors say which proof technique to use and sometimes it's not explicitly stated, so you will need to pick a valid proof technique that can get you the desired result. So these are just good skills to keep in mind when creating a proof. Don't worry - proof get a little easier and make more sense with practice!
 
 ## Contradiction
+The starting point for a proof by contradiction can be a little tricky, but it is fun when you get the hang of it. A common set up is simply "prove this" and it gives you some expression to prove. The way a proof by contradiction works is that you take the negation of what was given and assme those are True as your "givens" to start with, then you continue using those negated expressions to see if you derive a contradiction (or something that cannot possibly be True). I will give and explain one example below.
+
+### Example
+Prove the $\sqrt{2}$ is *irrational*.
+
+The first thing to do in a proof by contraction is to negate what is given and then assume that as a hypothesis.
+
+We assume $\sqrt{2}$ is *rational* and use various mathematical definitions to try to find a contradiction. The idea here is that we have to explore the world to see what would happen if $\sqrt{2}$ is indeed *rational* and look for something that doesn't make sense. In this problem, we will see that the greatest common divisor bewteen two number is found to be 1 and not 1 at the same time. This is the contradiction because this cannot be true. So we can conclude the $\sqrt{2}$ is *irrational* because if was *rational* then we have shown that a contadiction arises.
+
+> Note: $gcd(a, b)$ is the greatest common divisor between $a$ and $b$. In this problem, we will be concerned about $gcd(a, b) = 1$, which means that $\frac{a}{b}$ is in its simplest form and $gcd(a, b) \neq 1$, which means $\frac{a}{b}$ is not in its simplest form.
+
+The proof goes like this:
+- Assume $\sqrt{2}$ is rational.
+- This means $\sqrt{2}$ made up of some $\frac{a}{b}$ where $a, b \in \mathbb{Z}$ and $b \neq 0$ and $gcd(a, b) = 1$.
+- Now, $\sqrt{2} = \frac{a}{b}$.
+- Some rearranging gives, $2 = \frac{a^2}{b^2}$.
+- Solve for $a^2$ gives $a^2 = 2b^2$.
+- Using a theorem that says if $a^2$ then, $a$ is even too (it's a fun, quick proof to prove this theorem, try it), we can see that 2 divides $a$ evenly because the theorem says $a$ is even, so it's a mutliple of 2.
+- Then from $2 = \frac{a^2}{b^2}$, we can solve for $b^2$ to get $b^2 = 2a^2$.
+- Same as above, we can see that $b^2$ is even and it follows that $b$ is even.
+- Now, we have something that doesn't make sense. We found that $a$ and $b$ are both even, which means that 2 can divide them both, which means $gcd(a, b) \neq 1$. However, earlier in proof, we stated that  the $gcd(a, b)$ is 1. These both cannot be true at the same time, so we can conclude that the $\sqrt{2}$ is irrational because otherwise there would be an inconsistency.
 
 ## Contrapositive
 
 ## Induction
-
-## Direct proofs
 
 ## **Rules of Inference**
 This handout will be your best friend when doing some more formal boolean algebra proofs (see the Proofs section here). Like the previous handout, I will explain one rule from this one so you know how to read and use it when you have a formal proof to solve.
