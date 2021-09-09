@@ -16,7 +16,9 @@ The proof building skills you gain from this class will be foundational for your
 
 > Note: Sometimes professors say which proof technique to use and sometimes it's not explicitly stated, so you will need to pick a valid proof technique that can get you the desired result. So these are just good skills to keep in mind when creating a proof. Don't worry - proof get a little easier and make more sense with practice!
 
-## Contradiction
+---
+
+## **Contradiction**
 The starting point for a proof by contradiction can be a little tricky, but it is fun when you get the hang of it. A common set up is simply "prove this" and it gives you some expression to prove. The way a proof by contradiction works is that you take the negation of what was given and assme those are True as your "givens" to start with, then you continue using those negated expressions to see if you derive a contradiction (or something that cannot possibly be True). I will give and explain one example below.
 
 ### Example
@@ -39,12 +41,14 @@ The proof goes like this:
 - Same as above, we can see that $b^2$ is even and it follows that $b$ is even.
 - Now, we have something that doesn't make sense. We found that $a$ and $b$ are both even, which means that 2 can divide them both, which means $gcd(a, b) \neq 1$. However, earlier in proof, we stated that  the $gcd(a, b)$ is 1. These both cannot be true at the same time, so we can conclude that the $\sqrt{2}$ is irrational because otherwise there would be an inconsistency.
 
-### Formal Logic Proof
+## **Formal Proof Rules**
 Before we get to the next techniques, you need to be familiar with what is and how to make a formal proof. In general, these are made with two columns, left side has the mathematical expressions and the work shown and the right side as the name of the rule or explanation of the reasoning that you used to get to that result. A couple rules and then the example to tie it all together:
 1. Two columns: left has the actual expressions, right has the name of the the rule you applied and the line numbers for the expressions involved.
 1. Number each line starting from 1.
 
 I know it is annoying to always "show your work", but it is easy to get lost or make a small mistake in the proof and then the answer is off or you cannot get to the correct answer. There are many ways to make a proof for a given problem, so these rules are in place to make it clear to the reader *how* you solved it and to yourself to follow your process to easily backtrack if something went wrong. Believe me, it is a time saver.
+
+---
 
 ## Contrapositive
 The contrapositive is also an interesting proof technique. This technique uses the fact that $p \rightarrow q$ is logically equivalent to (i.e. the same as) $\neg q \rightarrow \neg p$. You can check this equivalence for yourself by applying the Definition of Implication to both statements and seeing that they are the same.
@@ -96,8 +100,7 @@ Contrapositive: Prove that if $n$ is odd, then $n^2$ is odd.
 
  Notice how most of this proof was just applying the formal definition of odd numbers (which you already knew but not formally) and manipulating the expression until something useful came about. There is not too much to explain other than reading the proof and following along because most of it is things you already knew but just slightly more formal!
 
-
-## **Induction**
+ ---
 
 ## **Rules of Inference**
 This handout will be your best friend when doing some more formal boolean algebra proofs (see the Proofs section here). Like the previous handout, I will explain one rule from this one so you know how to read and use it when you have a formal proof to solve.
@@ -158,3 +161,17 @@ Put into a more concrete example, let's say $q =$ it is raining and $p =$ get an
 In line 5 of the proof, this is using the Conjunction rule, which allows you to combine any expressions in the proof so far with an AND ($\land$) between them. In this case, I see that it would helpful to do that because Hypothesis 1 on line says that if you have $p \land q$, you can get $r$, which is what we need.
 
 Finally, I apply Modus Ponens again to lines 1 and 5 to get $r$ from $p \land q$ and $(p \land q) \rightarrow r$.
+
+---
+
+## **Induction**
+Induction is usually the proof technique that is hardest to grasp in my experience working with students, but it gets easier with more practice problems.
+
+The easiest introduction to the concept here is to think of a staircase. In order to begin walking on the staircase to get to each next step, you must first get on the very first step, but when you get on the first step, you know know how to get to the next step. So you use that information to get you to each next step until you get to the end.
+
+In inductive proofs, it is a similar flow: the first "step in the stair case" is a mathematical expression that must be established as true. Then you use that proven statement to help you prove each next step.
+
+There are two types of induction: weak and strong.
+
+### Weak Induction
+Putting the staircase analogy formally, $p(n) \rightarrow p(n+1)$, where $n \in \mathbb{N}$.
