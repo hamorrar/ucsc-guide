@@ -25,12 +25,12 @@ The guide uses the [extended version of hugo](https://github.com/gohugoio/hugo/r
 
 1. Install Git.
 1. Install Node (and its dependencies if on Windows).
-1. Download and install the extended version of Hugo (linked above).
+1. Download and install the extended version of Hugo (linked above). You can also use ``snap`` to install the extended version of Hugo with ``sudo snap install hugo --channel=extended``. ``snap`` works with a lot of Linux distros, and is pre-installed with some major distros such as Ubuntu 16.04+.
 1. Fork the repository on GitHub.
 1. Use the recursive tag when cloning your fork so that all the submodules are also downloaded: ``git clone --recursive git@github.com:your-username/ucsc-guide.git``
 1. ``cd ucsc-guide`` to navigate into the project.
-1. Install all the dependencies: `npm install`
-1. Use the `hugo serve` or ``hugo server`` command to start the server.
+1. Install all the dependencies: `npm install`.
+1. Use the ``hugo serve`` or ``hugo server`` command to start the server.
 1. Open a browser and go to ``https://localhost:1313/ucsc-guide``.
 
 #### **Notes for Hugo Development**
