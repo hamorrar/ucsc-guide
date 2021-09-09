@@ -30,7 +30,7 @@ The guide uses the [extended version of hugo](https://github.com/gohugoio/hugo/r
 1. Use the recursive tag when cloning your fork so that all the submodules are also downloaded: ``git clone --recursive git@github.com:your-username/ucsc-guide.git``
 1. ``cd ucsc-guide`` to navigate into the project.
 1. Install all the dependencies: `npm install`.
-1. Use the ``hugo serve`` or ``hugo server`` command to start the server.
+1. Use the ``hugo serve`` or ``hugo server`` command to start the server. If you would like to expose the website to your network, use ``hugo serve --bind 0.0.0.0`` or ``hugo server --bind 0.0.0.0``. This is useful for accessing the site from another machine when you are using a GUI-less OS to run the site.
 1. Open a browser and go to ``https://localhost:1313/ucsc-guide``.
 
 #### **Notes for Hugo Development**
