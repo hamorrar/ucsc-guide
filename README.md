@@ -8,11 +8,11 @@
 
 ## **A guide for prospective and current UCSC students.**
 
-This project is intendent to be an unofficial comprehensive guide for prospective, incoming, and current UCSC students. The Guide is not affiliated with UCSC officially. It is made for UCSC students, by UCSC Students.
+This project is intended to be an unofficial comprehensive guide for prospective, incoming, and current UCSC students. The Guide is not affiliated with UCSC officially. It is made for UCSC students, by UCSC Students.
 
 The Guide to the Guide has similar information and is located in the Guide [Landing Page](/content/en/docs/_index.md).
 
-Please see [Contribution Guidelines](https://hilalmorrar.com/ucsc-guide/docs/contribution_guidelines/) for steps on how to do the initial setup and contribute. Please see [Help Wanted](/HELPWANTED.md) for a list of which features of the site still need additional attention and contributions. If you think of something that is not on this list that should be, please open an issue or make a pull request with additions to the list.
+Please see [Contribution Guidelines](./content/en/docs/contribution_guidelines.md) for steps on how to do the initial setup and contribute. Please see [Help Wanted](/HELPWANTED.md) for a list of which features of the site still need additional attention and contributions. If you think of something that is not on this list that should be, please open an issue or make a pull request with additions to the list.
 
 ---
 
@@ -30,7 +30,7 @@ We believe that we can improve our current circumstances if we pay it forward. W
 
 ## Project Scope
 
-The project is intended to encompass every aspect of being a student at UCSC with the hopes of other schools following these footsteps and making a similar guide for their school. 
+The project is intended to encompass every aspect of being a student at UCSC with the hopes of other schools following these footsteps and making a similar guide for their school.
 
 ---
 
