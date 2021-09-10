@@ -12,7 +12,6 @@ description: >
   Introduction to Proofs.
 ---
 
-# Proofs
 The proof building skills you gain from this class will be foundational for your success in CSE 102. They may look intimidating but the most comforting advice I have received from my teachers and tutors is that notation is half the problem. Once you work your way through the notations in the problem, you can start to understand what you are looking at and think of approaches to solutions. The following are just previews into common proof techniques from CSE 16 and 102.
 
 > Note: Sometimes professors say which proof technique to use and sometimes it's not explicitly stated, so you will need to pick a valid proof technique that can get you the desired result. So these are just good skills to keep in mind when creating a proof. Don't worry - proof get a little easier and make more sense with practice!

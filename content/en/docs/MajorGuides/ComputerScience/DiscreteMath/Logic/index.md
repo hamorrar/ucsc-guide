@@ -15,7 +15,6 @@ description: >
   Introduction to Logic.
 ---
 
-# Logic
 The knowledge you gain about logic from Discrete Math (CSE 16) and Computer Systems and Assembly Language (CSE 12) will be some of the most commonly used skills in your career because of how frequently we use conditional statements and try to simplify them in code.
 
 ## Definitions

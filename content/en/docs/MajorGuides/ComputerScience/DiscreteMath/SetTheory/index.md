@@ -15,7 +15,6 @@ description: >
   Introduction to Set Theory.
 ---
 
-# Set Theory
 Set theory is the branch of mathematical logic that studies sets, which can be informally described as collections of objects. Founded by German mathematicians Richard Dedekind and Georg Cantor in the 1870s ([Wikipedia](https://en.wikipedia.org/wiki/Set_theory)).
 
 ## **Definitions**
