@@ -1,5 +1,5 @@
 ---
-title: "Off Campus Housing"
+title: "House/Apartment"
 linkTitle: "House/Apartment"
 weight: 1
 draft: false
