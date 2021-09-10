@@ -62,7 +62,7 @@ When creating or editing pages, we follow certain conventions to ensure consiste
 
 Conventions:
 1. Folders and subfolders within ``/content/en/docs`` are to be ``PascalCase``.
-1. Files within ``/content/en/docs`` and its subfolders are to be ``snake_case``.
+1. Files within ``/content/en/docs`` and its subfolders are to be ``snake_case``. An exception to this convention is index files. Index files should be named ``_index.md``.
 1. Article titles are to be ``Title Case``.
 1. Article subheadings are to be ``Sentence case``.
 1. Commit messages are to be descriptive. They must describe the commit accurately and concisely.

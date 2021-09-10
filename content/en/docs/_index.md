@@ -13,7 +13,7 @@ This guide's purpose is to introduce new students to UCSC student life through t
 ---
 
 ### For current/returning students
-Some of the information in the Guide may already be known to you and some of it may not. If you find something to be inaccurate or would like to add more information, please let me know or see the [Contribution Guidelines]({{< ref "/docs/ContributionGuidelines" >}}) if you would like to try making a fix yourself!
+Some of the information in the Guide may already be known to you and some of it may not. If you find something to be inaccurate or would like to add more information, please let me know or see the [Contribution Guidelines]({{< ref "/docs/contribution_guidelines" >}}) if you would like to try making a fix yourself!
 
 ---
 
