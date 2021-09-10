@@ -3,7 +3,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/hamorrar/ucsc-guide)](https://github.com/hamorrar/ucsc-guide/issues)
 [![GitHub forks](https://img.shields.io/github/forks/hamorrar/ucsc-guide)](https://github.com/hamorrar/ucsc-guide/network)
 [![GitHub stars](https://img.shields.io/github/stars/hamorrar/ucsc-guide)](https://github.com/hamorrar/ucsc-guide/stargazers)
-[![GitHub license](https://img.shields.io/github/license/hamorrar/ucsc-guide)](https://github.com/hamorrar/ucsc-guide/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/hamorrar/ucsc-guide)](/LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](/CODE_OF_CONDUCT.md)
 
 ## **A guide for prospective and current UCSC students.**
