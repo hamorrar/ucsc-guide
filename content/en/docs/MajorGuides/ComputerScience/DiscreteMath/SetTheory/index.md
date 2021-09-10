@@ -2,6 +2,8 @@
 title: "Set Theory"
 linkTitle: "Set Theory"
 weight: 1
+author: Hilal Morrar
+date: "2021-09-01"
 icon:
 draft: false
 resources:

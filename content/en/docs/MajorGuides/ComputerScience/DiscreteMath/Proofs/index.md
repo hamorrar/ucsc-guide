@@ -2,6 +2,8 @@
 title: "Proofs"
 linkTitle: "Proofs"
 weight: 1
+author: Hilal Morrar
+date: "2021-09-10"
 icon:
 draft: false
 resources:

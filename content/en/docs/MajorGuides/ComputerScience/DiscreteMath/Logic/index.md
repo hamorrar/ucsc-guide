@@ -2,6 +2,8 @@
 title: "Logic"
 linkTitle: "Logic"
 weight: 1
+author: Hilal Morrar
+date: "2021-09-08"
 icon:
 draft: false
 resources:

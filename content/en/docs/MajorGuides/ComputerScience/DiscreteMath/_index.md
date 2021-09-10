@@ -2,6 +2,8 @@
 title: "Discrete Math"
 linkTitle: "Discrete Math"
 weight: 1
+author: Hilal Morrar
+date: "2021-09-01"
 icon:
 draft: false
 description: >
