@@ -1,0 +1,1 @@
+Contributions are welcome and encouraged. Thank you for your time and effort. Please see the [Contribution Guidelines](https://hilalmorrar.com/ucsc-guide/docs/contribution_guidelines/) for more information!

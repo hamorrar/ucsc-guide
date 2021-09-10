@@ -5,5 +5,5 @@ weight: 1
 icon:
 draft: false
 description: >
-  Off Campus but through UCSC housing in downtown Santa Cruz.
+  Off campus, but through UCSC housing in downtown Santa Cruz.
 ---
