@@ -37,10 +37,12 @@ The guide uses the [extended version of hugo](https://github.com/gohugoio/hugo/r
 1. Open a browser and go to ``https://localhost:1313/ucsc-guide``.
 
 #### **Notes for Hugo development**
-The repository looks a bit intimidating at first but most of it is all set up from Hugo initially and I fixed it up so most of the work will be done in the [./content/en/docs](./content/en/docs/) directory to write up articles in Markdown. Also when previewing changes locally, be careful of the ``draft`` value in the top of the Markdown file you are working in. If it is set to ``true`` it will not show up in the final build, but it will show up in a preview only if you use the ``-D`` flag in when starting the local server. Every article page you want to write has to have those preamble lines (Hugo calls it "front matter") at the top for it to render correctly (or at all). You can copy and paste from another file and modify the appropriate fields.
+The repository looks a bit intimidating at first, but most of it is all set up from Hugo initially. Most of the work will be done in the ``/content/en/docs`` directory to write up articles in Markdown. When previewing changes locally, be careful of the ``draft`` value in the top of the Markdown file you are working in. If it is set to ``true``, it will not show up in the final build, but it will show up in a preview only if you use the ``-D`` flag in when starting the local server. Every article page you want to write has to have those preamble lines (Hugo calls it "front matter") at the top for it to render correctly (or at all). You can copy and paste from another file and modify the appropriate fields.
 
 - ``title`` is the title of the article
 - ``linkTitle`` is what will show up in the left navigation bar
+- ``author`` is the author of the article
+- ``date`` is the date the article was written in YYYY-MM-DD format
 - ``weight`` is for ordering the pages in the directory for the left navigation bar
 - ``icon`` is if you want to put an emote next to the title in the left navigation bar from [Font Awesome](https://fontawesome.com/v5.15/icons?d=gallery&p=2)
 - ``draft`` is to publish the file on the site if it is in the main branch (``false`` - not a draft. ``true`` - is a draft)
