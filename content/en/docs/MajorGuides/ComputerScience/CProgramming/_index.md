@@ -1,7 +1,7 @@
 ---
 title: "C Programming"
 linkTitle: "C Programming"
-author: "Brian Mak"
+author: "Brian Mak, Ben Grant"
 date: "2021-09-10"
 weight: 1
 icon:
@@ -51,3 +51,7 @@ Line 4 shows a call to the ``printf`` function. In this case, ``printf`` is used
 Line 6 makes the program return with error code 0. In C, the main function returns error codes. An error code of 0 indicates that the program exited *without* an error. A non-zero error code indicates that the program exited *with* an error. Return statements and values will be covered more in-depth in the "Functions" section.
 
 If you are still confused about how this program works, do not worry. Each part of it will eventually be covered in this section's articles.
+
+## Additional resources
+
+The definitive book on C is _The C Programming Language_, by Brian Kernighan and Dennis Ritchie (commonly referred to by their last initials, "K&R"). It's concise, well-written, and generally a model for excellent technical writing. The second and most recent edition was published all the way back in 1988, but C has not changed much since then, so it is still a great resource. It can easily be found legally (for money) or illegally (for free) online.
