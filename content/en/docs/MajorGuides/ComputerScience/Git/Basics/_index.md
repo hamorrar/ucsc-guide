@@ -4,6 +4,7 @@ linkTitle: "Basics"
 description: "A guide for the basics of Git."
 date: 2021-09-15
 author: Steven Mak
+weight: 2
 ---
 
 ## Summary

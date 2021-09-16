@@ -4,6 +4,7 @@ linkTitle: "Fundamentals"
 description: "A guide for how Git and version control works."
 date: 2021-09-12
 author: Steven Mak
+weight: 1
 ---
 
 ## Summary
