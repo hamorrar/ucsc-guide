@@ -54,4 +54,4 @@ If you are still confused about how this program works, do not worry. Each part 
 
 ## Additional resources
 
-The definitive book on C is _The C Programming Language_, by Brian Kernighan and Dennis Ritchie (commonly referred to by their last initials, "K&R"). It's concise, well-written, and generally a model for excellent technical writing. The second and most recent edition was published all the way back in 1988, but C has not changed much since then, so it is still a great resource. It can easily be found legally (for money) or illegally (for free) online.
+The definitive book on C is _The C Programming Language_, by Brian Kernighan and Dennis Ritchie (the book is often called "K&R" after the author's last initials). It's concise, well-written, and generally a model for excellent technical writing. The second and most recent edition was published all the way back in 1988, but C has not changed much since then, so it is still a great resource. It can easily be found legally (for money) or illegally (for free) online.
