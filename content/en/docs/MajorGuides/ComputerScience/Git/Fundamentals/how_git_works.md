@@ -81,7 +81,7 @@ To make an account for school-related remote repos which you'll use in many comp
 
 If you want to create an account on a site hosting remote repositories to put personal projects in to using Git, use a site like [GitHub](https://github.com) or [GitLab](https://gitlab.com/users/sign_in).
 
---
+---
 
 Once you create an account, go to the next article, which will explain how to set up an SSH key for Git so that you can push and pull changes to/from the remote repository without having to authenticate using your password. 
 
