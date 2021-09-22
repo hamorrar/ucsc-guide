@@ -86,7 +86,7 @@ The syntax for an if statement is `if (condition)`. The following code will be e
 #include <stdio.h>
 #include <stdbool.h>
 
-void if_statements(void) {
+int main(void) {
     // one statement
     if (false) printf("this is not printed\n");
 
@@ -99,26 +99,137 @@ void if_statements(void) {
     if (2 < 3) {
         printf("this is printed\n");
     }
+
+    return 0;
 }
 ```
 
+TODO else, else if
+
 ## While
 
-A while loop runs as long as its condition is true. The standard while loop is known as a _pre-test loop_, as the condition is checked _before_ each iteration. So if the condition is false right away, the code inside the loop will never run.
+A while loop runs as long as its condition is true. The standard while loop is known as a top-test loop_, as the condition is checked _before_ each iteration. So if the condition is false right away, the code inside the loop will never run. Here's how it looks:
 
-TODO examples
+```c
+#include <stdio.h>
 
-## Do while
+int main(void) {
+    int i = 0;
+    while (i <= 5) {
+        printf("%d\n", i);
+        i++;
+    }
 
-The do while loop is similar to the while loop, except the condition is evaluated _after_ each iteration of the loop. This means that the code inside the loop is guaranteed to run at least once, and then after each iteration, the condition is checked to see if it should run again.
+    return 0;
+}
+```
 
-TODO examples
+This program will print:
+
+```
+0
+1
+2
+3
+4
+5
+```
+
+## Do-while
+
+The do-while loop is similar to the while loop, except the condition is evaluated _after_ each iteration of the loop, making it a _bottom-test loop_. This means that the code inside the loop is guaranteed to run at least once, and then after each iteration, the condition is checked to see if it should run again.
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int i = 0;
+    printf("running first loop\n");
+
+    do {
+        printf("first loop iteration\n");
+    } while (i != 0);
+
+    printf("running second loop\n");
+
+    do {
+        printf("%d\n", i);
+        i++;
+    } while (i <= 5);
+
+    return 0;
+}
+```
+
+Output:
+
+```
+running first loop
+first loop iteration
+running second loop
+0
+1
+2
+3
+4
+5
+```
+
+Do-while loops are much less commonly used than standard while loops, but they are sometimes useful.
 
 ## For loop
 
-A for loop is a specialized while loop with additional functionality. It has three parts:
+A for loop is a specialized while loop with additional functionality for the types of loops that are common. The syntax is `for (initialization; test; increment)`. It has three parts:
 
-TODO finish this lol
+- **initialization:** code run before the first iteration.
+- **test:** the condition to keep the loop running. Like while loops, for loops are top-test loops, so this condition is checked before each iteration.
+- **increment:** code run after each iteration.
+
+All three parts are technically optional, although most for loops use all three. Most for loops also have a single variable which all three parts use. Perhaps the most common for loop simply runs the code inside a given number of times:
+
+```c
+for (int i = 0; i < 5; i++) {
+    // loop body
+}
+```
+
+This loop will iterate 5 times, and `i` will take on the values from `0` to `4`, inclusive.
+
+## Switch-case statement
+
+The switch-case statement lets you execute one block of code depending on the value of a variable. Note that this works the same way as the normal equality operator (`==`), so it will not work for strings.
+
+A `switch` statement contains `case` statements for different values that the variable could be. If one of the `case` statements matches, the code after that statement is run until the next `break` statement (more on `break` in the next section). If no value matches, it jumps to the `default` statement, if there is one.
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    int i = 4;
+    switch (i) {
+    case 1:
+        printf("i is 1\n");
+        break;
+    case 2:
+    case 3:
+        printf("i is 2 or 3\n");
+        break;
+    case 4:
+        printf("i is 4\n");
+        break;
+    case 5:
+        printf("i is 5\n");
+        // no break, so we keep going even after the next case
+    case 6:
+        printf("i is 5 or 6\n");
+        break;
+    default:
+        printf("i is something else\n");
+    }
+
+    return 0;
+}
+```
 
 ## Additional resources
 
