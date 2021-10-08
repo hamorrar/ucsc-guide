@@ -84,7 +84,16 @@ side b: 4
 c = 5.000000
 ```
 
-It worked! But, as you might have noticed from the code, our calculation is extremely limited—the square root function only returns integer approximations for numbers between 0 and 25, and fails on any other numbers. We're going to modify this program to:
+It worked! But, as you might have noticed from the code, our calculation is extremely limited—the square root function only returns integer approximations for numbers between 0 and 25, and fails on any other numbers. Here's an example:
+
+```
+$ ./hypot
+side a: 2
+side b: 2
+c = 3.000000
+```
+
+The side length should be &radic;8 &approx; 2.828. We're going to modify this program to:
 
 - use the built-in math library's `sqrt` function
 - move the `my_hypot` function into another file
@@ -150,3 +159,88 @@ clang-12: error: linker command failed with exit code 1 (use -v to see invocatio
 ```
 
 Uh oh! The important part of this error is <code>undefined reference to \`sqrt'</code>. Remember that `math.h` contains only the declaration of `sqrt`. That essentially tells the compiler that there _will be_ a function available, called `sqrt`, returning a `double`, and taking one `double` as its argument. However, to finish linking the binary, the linker needs to know what the address of that function will be at runtime, so that it can insert the proper function call. (We'll get into the difference between compiling and linking later. For now, know that `clang -Wall -Wextra -Werror -Wpedantic hypot.c -o hypot` runs both steps, compiling and then linking your C file).
+
+We can fix this error by _linking against_ the math library. This is a _shared library_, meaning that its code can be used by any program on your computer, and the code is loaded dynamically when the program runs instead of being part of the executable. (All modern operating systems have shared libraries, but they use different file extensions. On Linux they are `.so` files, macOS uses `.dylib`, and Windows uses `.dll`.) Each executable contains a list of shared libraries that should be loaded, and linking against a shared library just adds its name to this list.
+
+Library names are prefixed with `lib`. The math library is `libm`. To link against a library, you use `-l` followed by the name of the library without the prefix, so the math library is `-lm`. Let's recompile with this flag:
+
+```
+$ clang -Wall -Wextra -Werror -Wpedantic hypot.c -o hypot -lm
+```
+
+This time, the program handles the entire range of square roots:
+
+```
+$ ./hypot
+side a: 2
+side b: 2
+c = 2.828427
+```
+
+Besides the fact that compilation succeeded, how do we know that the math library was linked properly? There's a utility called `ldd` that lists which libraries a given executable links against. Let's try it on our `hypot` binary:
+
+```
+$ ldd hypot
+        linux-vdso.so.1 (0x00007ffdc0912000)
+        libm.so.6 => /usr/lib/libm.so.6 (0x00007fa15dbbd000)
+        libc.so.6 => /usr/lib/libc.so.6 (0x00007fa15d9f1000)
+        /lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007fa15dd43000)
+```
+
+The exact output may differ from system to system, but you should at least see `libm` and `libc`. `libc` is the standard C library, and it is linked by default. That's why we can call functions like `printf` and `scanf` without any linker flags—they are part of `libc`.
+
+Another interesting thing about this output is that it shows where each library is stored. On my system, they are all in `/usr/lib`. I tried this on an Ubuntu system and they were in `/lib/x86_64-linux-gnu` (suggesting that you could also have dynamic libraries installed for different CPU architectures). Fortunately, the system determines the exact path when your executable is running. This means I could copy my `hypot` executable onto an Ubuntu system (or copy an executable compiled on Ubuntu onto my system), and it would still find all the libraries it needs.
+
+## Splitting up our program
+
+We have successfully modified our program to use the system's `sqrt` function instead of our own janky one! All that remains is to, as promised, move the `my_hypot` function into its own file.
+
+We'll create two new files: a header, `mathlib.h`, and a C file, `mathlib.c`. Insert the following contents:
+
+```c
+// mathlib.h
+double my_hypot(double a, double b);
+```
+
+```c
+// mathlib.c
+#include "mathlib.h"
+
+#include <math.h>
+
+double my_hypot(double a, double b) {
+    return sqrt(a * a + b * b);
+}
+```
+
+We also need to include the header file (not the C file!) from our main `hypot.c`. Add the `#include` statement:
+
+```c
+// hypot.c
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+// new line
+#include "mathlib.h"
+
+double my_hypot(double a, double b) {
+    return sqrt(a * a + b * b);
+}
+
+int main(void) {
+    double a, b;
+    printf("side a: ");
+    if (!scanf("%lf", &a)) {
+        fprintf(stderr, "invalid input\n");
+        return 1;
+    }
+    printf("side b: ");
+    if (!scanf("%lf", &b)) {
+        fprintf(stderr, "invalid input\n");
+        return 1;
+    }
+
+    printf("c = %lf\n", my_hypot(a, b));
+    return 0;
+}
+```
