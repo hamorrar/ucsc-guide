@@ -90,9 +90,11 @@ It worked! But, as you might have noticed from the code, our calculation is extr
 - move the `my_hypot` function into another file
 - automatically compile with all the right parameters when we run `make`
 
-## Linking
+## Using the math library
 
 You may know that in order to call math functions like `sqrt`, you need to do two things: put `#include <math.h>` at the top of your file, and add `-lm` to your compilation flags. What do these do?
+
+### Header files
 
 Including a file with `#include` inserts its contents at the position of the `#include` statement, nothing more. Since `<math.h>` uses angle brackets instead of quotes, the preprocessor (which is responsible for processing includes, among other things) looks for a file in the _include path_, instead of the current directory. You can modify the include path, but the default (on Linux, at least) is `/usr/include`. This means that we are including `/usr/include/math.h`, a file that is included with the operating system. You can actually open and view this file! Sadly, it is full of macros and includes other files, so the actual declaration of `sqrt` is not easy to find, but you can imagine that somewhere in that file is the declaration:
 
@@ -135,6 +137,8 @@ int main(void) {
     return 0;
 }
 ```
+
+### Linking against a system library
 
 Let's recompile:
 
