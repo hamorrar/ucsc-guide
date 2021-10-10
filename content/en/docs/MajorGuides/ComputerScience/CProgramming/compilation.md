@@ -288,3 +288,76 @@ int main(void) {
 ```
 
 If we compile this using the same command as before, it works!
+
+## Automating compilation with Make
+
+We're almost ready to reduce our entire compilation process to just one command, but first we must learn one more concept.
+
+### Object files
+
+An executable file (like the `hypot` file that we are creating) contains several things:
+
+- machine code for every function in your program
+- an entry point (in C, the `main` function) where execution should begin
+- data that the program will need when it runs (e.g. the `"side a: "`) string that we print
+- space for global variables
+- list of dynamic libraries that should be loaded
+
+An _object file_ is similar to an executable, but different in some important ways. An executable file is your whole program, but for programs with multiple source files, an object file is the compiled version of a single C file. Since object files cannot run on their own, they don't have an entry point (they could have a function called `main`, however). Also, in an executable file, every function that's referenced must be defined either in the executable itself, or in a dynamic library that is linked. Object files can reference external functions.
+
+To compile a C program, you _compile_ each C file into an object file, and then _link_ those object files into one executable. Even if you don't list these steps explicitly, Clang still performs both steps; it just deletes the object files when it's done. The linking process entails:
+
+- combining all the code in the various object files, making sure there are no functions with the same name
+- for each function call, figuring out where that function will actually be located (in the binary or in a dynamic library) at runtime
+- making sure there is a `main` function, and marking it as the entry point
+- producing the final binary
+
+### Manually compiling and linking
+
+First, let's run the commands to compile our C files to object files and link them. This is what make will eventually do for us.
+
+The `-c` flag tells Clang to output an object file instead of an executable. By default, it will just replace `.c` with `.o`, but you can also specify the location of the object file manually with `-o`. Delete the `hypot` binary if you still have it from a previous section, and then let's compile `hypot.c` and see what it creates:
+
+```
+$ clang -Wall -Wextra -Werror -Wpedantic -c hypot.c
+$ ls
+hypot.c  hypot.o  mathlib.c  mathlib.h
+```
+
+Even though `hypot.c` uses functions from `mathlib.c`, it compiles just fine. But let's try linking it. The command to link object files is the same as the command to link C files, except you specify object files as input. We also omit the warning flags, since those only affect the compiler, not the linker.
+
+```
+$ clang hypot.o -o hypot
+/usr/bin/ld: hypot.o: in function `main':
+hypot.c:(.text+0xc1): undefined reference to `my_hypot'
+clang-12: error: linker command failed with exit code 1 (use -v to see invocation)
+```
+
+It's complaining that it can't find the `my_hypot` function, since that is in a different file. Note that we got this error during linking and not compilation, since object files are allowed to reference functions from other files. Let's compile `mathlib.c` into an object file and try again:
+
+```
+$ clang -Wall -Wextra -Werror -Wpedantic -c mathlib.c
+$ ls
+hypot.c  hypot.o  mathlib.c  mathlib.h  mathlib.o
+$ clang hypot.o mathlib.o -o hypot
+/usr/bin/ld: mathlib.o: in function `my_hypot':
+mathlib.c:(.text+0x2b): undefined reference to `sqrt'
+clang-12: error: linker command failed with exit code 1 (use -v to see invocation)
+```
+
+Now it can find `my_hypot`, but it still can't find `sqrt` since we aren't linking the math library. We can add the `-lm` flag the same way as before:
+
+```
+$ clang -lm hypot.o mathlib.o -o hypot
+$ ls
+hypot  hypot.c  hypot.o  mathlib.c  mathlib.h  mathlib.o
+```
+
+It worked!
+
+Currently, after changing our code, we would have to:
+
+- recompile any C file(s) that we changed into new object files
+- link all our object files (including ones that didn't change) into a new binary
+
+This will become impractical quickly. [Let's automate it!](https://xkcd.com/1319/)
