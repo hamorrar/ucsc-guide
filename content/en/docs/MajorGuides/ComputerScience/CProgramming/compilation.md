@@ -5,7 +5,7 @@ author: "Ben Grant"
 date: 2021-10-08T12:06:29-07:00
 weight: 1
 icon:
-draft: true
+draft: false
 description: >
   Compilation, linking, header files, object files, and Makefiles
 ---
@@ -199,6 +199,8 @@ We'll create two new files: a header, `mathlib.h`, and a C file, `mathlib.c`. In
 
 ```c
 // mathlib.h
+#pragma once
+
 double my_hypot(double a, double b);
 ```
 
@@ -212,6 +214,8 @@ double my_hypot(double a, double b) {
     return sqrt(a * a + b * b);
 }
 ```
+
+The line `#pragma once` in `mathlib.h` ensures that the header file is only included once. It won't make a difference in this tutorial, but in more advanced programs where one header file includes another header file (e.g. to get type definitions), you may get errors about multiple definitions of the contents of a header without `#pragma once`.
 
 We also need to include the header file (not the C file!) from our main `hypot.c`. Add the `#include` statement:
 
@@ -244,3 +248,43 @@ int main(void) {
     return 0;
 }
 ```
+
+You may already be thinking of some other changes we'll have to make to `hypot.c`. Let's add `mathlib.c` as an input file to our last compilation command, and try compiling this:
+
+```
+$ clang -Wall -Wextra -Werror -Wpedantic hypot.c mathlib.c -o hypot -lm
+/usr/bin/ld: /tmp/mathlib-5b7ded.o: in function `my_hypot':
+mathlib.c:(.text+0x0): multiple definition of `my_hypot'; /tmp/hypot-96432d.o:hypot.c:(.text+0x0): first defined here
+clang-12: error: linker command failed with exit code 1 (use -v to see invocation)
+```
+
+Zeroing in on that error, the main issue is <code>multiple definition of \`my_hypot'</code>. It says that one definition is in `mathlib.c` and another is in `hypot.c`. Let's remove the one in `hypot.c`:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+#include "mathlib.h"
+
+// my_hypot function removed
+
+int main(void) {
+    double a, b;
+    printf("side a: ");
+    if (!scanf("%lf", &a)) {
+        fprintf(stderr, "invalid input\n");
+        return 1;
+    }
+    printf("side b: ");
+    if (!scanf("%lf", &b)) {
+        fprintf(stderr, "invalid input\n");
+        return 1;
+    }
+
+    printf("c = %lf\n", my_hypot(a, b));
+    return 0;
+}
+```
+
+If we compile this using the same command as before, it works!
