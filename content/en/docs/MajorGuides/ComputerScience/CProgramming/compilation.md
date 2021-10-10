@@ -361,3 +361,41 @@ Currently, after changing our code, we would have to:
 - link all our object files (including ones that didn't change) into a new binary
 
 This will become impractical quickly. [Let's automate it!](https://xkcd.com/1319/)
+
+### Make
+
+Make is a utility to automate your build process. It reads a Makefile (which is just a text file exactly called `Makefile`) for instructions on how to produce various files, and builds the one that you specified.
+
+The true power of Make lies in its dependency system. You can specify the files that a file depends on (for instance, our binary `hypot` depends on the object files `hypot.o` and `mathlib.o`). When you use Make to build one file, it will automatically build all the file's dependencies. But it will also look at when the various files were modified, and avoid rebuilding dependencies that have not changed since the file that depends on them was rebuilt. In our example, this means that if we run `make`, change `hypot.c`, and run `make` again, it won't bother recompiling `mathlib.c`. This saves a lot of time for large programs!
+
+We're going to build up our Makefile a little bit at a time. Create a file called `Makefile` with the following contents:
+
+```makefile
+CC = clang
+CFLAGS = -Wall -Wextra -Werror -Wpedantic
+LDFLAGS = -lm
+EXEC = hypot
+OBJS = hypot.o mathlib.o
+```
+
+These are variables that we'll use later in the Makefile.
+
+- `CC` is the name of the C compiler that we use
+- `CFLAGS` are the flags that are passed to the compiler
+- `LDFLAGS` are the flags that are passed to the linker
+- `EXEC` is the name of the executable file we are making
+- `OBJS` is the list of object files that we want to compile and link
+
+Let's add the next parts to our Makefile:
+
+```makefile
+CC = clang
+CFLAGS = -Wall -Wextra -Werror -Wpedantic
+LDFLAGS = -lm
+EXEC = hypot
+OBJS = hypot.o mathlib.o
+
+$(EXEC): $(OBJS)
+	$(CC) $(CFLAGS) -o $(EXEC) $(OBJS)
+```
+
