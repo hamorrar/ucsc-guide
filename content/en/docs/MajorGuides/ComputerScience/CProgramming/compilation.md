@@ -10,9 +10,9 @@ description: >
   Compilation, linking, header files, object files, and Makefiles
 ---
 
-This page describes how to compile C programs that are more complex than a single source file. We'll cover how to split code across multiple files, how to compile those files, how to automate the build process using GNU make, and how to make use of system libraries.
+This page describes how to compile C programs that are more complex than a single source file. We'll cover how to split code across multiple files, how to compile those files, how to automate the build process using GNU Make, and how to make use of system libraries.
 
-You can follow along with this guide on your own computer. All you'll need is familiarity with the command line and a C programming environment with recent versions of clang and make. I would recommend using Linux (either running on your computer, in a virtual machine, or in WSL2). These commands may also work on macOS if you install clang and make, but they will _not_ work on Windows if you don't have a Linux environment.
+You can follow along with this guide on your own computer. All you'll need is familiarity with the command line and a C programming environment with recent versions of Clang and Make. I would recommend using Linux (either running on your computer, in a virtual machine, or in WSL2). These commands may also work on macOS if you install Clang and Make, but they will _not_ work on Windows if you don't have a Linux environment.
 
 ## Our program
 
@@ -63,16 +63,16 @@ int main(void) {
 }
 ```
 
-You may already know the command to compile this using clang:
+You may already know the command to compile this using Clang:
 
 ```bash
 $ clang -Wall -Werror -Wextra -Wpedantic -o hypot hypot.c
 ```
 
-But what does every part of this mean? clang, like most command line programs, lets you specify _input files_ (in this case, C files to compile) as well as _flags_ that modify its behavior. Each argument that isn't part of a flag is interpreted as an input file. Let's break down all the arguments:
+But what does every part of this mean? Clang, like most command line programs, lets you specify _input files_ (in this case, C files to compile) as well as _flags_ that modify its behavior. Each argument that isn't part of a flag is interpreted as an input file. Let's break down all the arguments:
 
-- `-Wall`, `-Werror`, `-Wextra`, `-Wpedantic`: each of these enables a certain class of warnings. Together, they make clang very strict. With these flags, compilation will often fail when issues are encountered that would normally only be treated as warnings.
-- `-o`,  `hypot`: the `o` stands for "output," and means that the next argument should be used as the output filename. This makes clang save the executable file as `hypot`, and prevents `hypot` from being interpreted as an input filename.
+- `-Wall`, `-Werror`, `-Wextra`, `-Wpedantic`: each of these enables a certain class of warnings. Together, they make Clang very strict. With these flags, compilation will often fail when issues are encountered that would normally only be treated as warnings.
+- `-o`,  `hypot`: the `o` stands for "output," and means that the next argument should be used as the output filename. This makes Clang save the executable file as `hypot`, and prevents `hypot` from being interpreted as an input filename.
 - `hypot.c`: this is the only input file.
 
 The compilation should succeed without errors. Now you can run the program:
