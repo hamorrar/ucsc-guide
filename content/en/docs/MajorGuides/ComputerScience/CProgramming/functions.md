@@ -5,7 +5,7 @@ author: "Ben Grant"
 date: 2021-09-16T01:06:15-07:00
 weight: 1
 icon:
-draft: false
+draft: true
 description: >
   C functions, static variables, and function pointers
 ---

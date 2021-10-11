@@ -5,7 +5,7 @@ author: "Brian Mak"
 date: "2021-09-11"
 weight: 1
 icon:
-draft: false
+draft: true
 description: >
   An explanation of data types and variables in C.
 ---
