@@ -258,12 +258,11 @@ mathlib.c:(.text+0x0): multiple definition of `my_hypot'; /tmp/hypot-96432d.o:hy
 clang-12: error: linker command failed with exit code 1 (use -v to see invocation)
 ```
 
-Zeroing in on that error, the main issue is <code>multiple definition of \`my_hypot'</code>. It says that one definition is in `mathlib.c` and another is in `hypot.c`. Let's remove the one in `hypot.c`:
+Zeroing in on that error, the main issue is <code>multiple definition of \`my_hypot'</code>. It says that one definition is in `mathlib.c` and another is in `hypot.c`. Let's remove the one in `hypot.c` (we also remove `#include <math.h>` since this file no longer needs to call `sqrt`):
 
 ```c
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
 #include "mathlib.h"
 
@@ -614,4 +613,58 @@ make[1]: Leaving directory '/home/ben/code/c/ucsc-guide-hypot'
 scan-build: Analysis run complete.
 scan-build: Removing directory '/tmp/scan-build-2021-10-11-005941-146456-1' because it contains no reports.
 scan-build: No bugs found.
+```
+
+## Expanding our program
+
+You've now seen everything you need to know to use Makefiles. In this last section, I will demonstrate how the build process would change if you wanted to add more C files to your project. We're going to add one more C file and also have our Makefile compile a second binary in addition to `hypot`.
+
+In the spirit of assignment 2, we'll build a test harness that compares the results of our `my_hypot` function with the standard library's `hypot`. The results should be identical, since we're also using the standard library's `sqrt` function and the calculation for what to take the square root of is trivial, but doing this will let us expand on our program.
+
+Here's the code for the test harness. Save it in `hypot-test.c`:
+
+```c
+// hypot-test.c
+#include <math.h>
+#include <stdio.h>
+
+#include "mathlib.h"
+
+int main(void) {
+    for (double a = 1.0; a <= 4.0; a += 1.0) {
+        for (double b = 1.0; b <= 4.0; b += 1.0) {
+            double hypot_result = hypot(a, b), my_hypot_result = my_hypot(a, b),
+                         difference = fabs(hypot_result - my_hypot_result);
+            printf("a = %.0f, b = %.0f: hypot = %16.15lf, my_hypot = %16.15lf, diff "
+                   "= %16.15lf\n",
+                   a, b, hypot_result, my_hypot_result, difference);
+        }
+    }
+    return 0;
+}
+
+```
+
+We can compile it manually, making sure to link against the math library and our own `mathlib.o` (run `make` again if you don't have the object file):
+
+```
+$ clang -Wall -Werror -Wextra -Wpedantic -c hypot-test.c
+$ clang -lm -o hypot-test hypot-test.o mathlib.o
+$ ./hypot-test
+a = 1, b = 1: hypot = 1.414213562373095, my_hypot = 1.414213562373095, diff = 0.000000000000000
+a = 1, b = 2: hypot = 2.236067977499790, my_hypot = 2.236067977499790, diff = 0.000000000000000
+a = 1, b = 3: hypot = 3.162277660168380, my_hypot = 3.162277660168380, diff = 0.000000000000000
+a = 1, b = 4: hypot = 4.123105625617661, my_hypot = 4.123105625617661, diff = 0.000000000000000
+a = 2, b = 1: hypot = 2.236067977499790, my_hypot = 2.236067977499790, diff = 0.000000000000000
+a = 2, b = 2: hypot = 2.828427124746190, my_hypot = 2.828427124746190, diff = 0.000000000000000
+a = 2, b = 3: hypot = 3.605551275463989, my_hypot = 3.605551275463989, diff = 0.000000000000000
+a = 2, b = 4: hypot = 4.472135954999580, my_hypot = 4.472135954999580, diff = 0.000000000000000
+a = 3, b = 1: hypot = 3.162277660168380, my_hypot = 3.162277660168380, diff = 0.000000000000000
+a = 3, b = 2: hypot = 3.605551275463989, my_hypot = 3.605551275463989, diff = 0.000000000000000
+a = 3, b = 3: hypot = 4.242640687119285, my_hypot = 4.242640687119285, diff = 0.000000000000000
+a = 3, b = 4: hypot = 5.000000000000000, my_hypot = 5.000000000000000, diff = 0.000000000000000
+a = 4, b = 1: hypot = 4.123105625617661, my_hypot = 4.123105625617661, diff = 0.000000000000000
+a = 4, b = 2: hypot = 4.472135954999580, my_hypot = 4.472135954999580, diff = 0.000000000000000
+a = 4, b = 3: hypot = 5.000000000000000, my_hypot = 5.000000000000000, diff = 0.000000000000000
+a = 4, b = 4: hypot = 5.656854249492381, my_hypot = 5.656854249492381, diff = 0.000000000000000
 ```
