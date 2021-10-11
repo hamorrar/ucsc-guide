@@ -489,4 +489,129 @@ mathlib.o: mathlib.c
 	$(CC) $(CFLAGS) -c mathlib.c
 ```
 
-We've listed `hypot` as the sole dependency of the `all` target. Note that there are no commands to build `all`, because it will still run the commands to build `hypot`.
+We've listed `hypot` as the sole dependency of the `all` target. Note that there are no commands to build `all`, because it will still run the commands to build `hypot`. Feel free to try deleting the executable and/or object files and running `make` again.
+
+#### Cleanup
+
+It's common to include a target called `clean` that deletes all executables and object files. We'll do this using `rm` with the `-f` flag ("force"). The flag means that if we ask it to delete a file that doesn't exist, it will silently ignore that argument instead of producing an error, so we can still run our `clean` target even if there isn't anything for it to delete.
+
+```makefile
+CC = clang
+CFLAGS = -Wall -Wextra -Werror -Wpedantic
+LDFLAGS = -lm
+EXEC = hypot
+OBJS = hypot.o mathlib.o
+
+all: $(EXEC)
+
+$(EXEC): $(OBJS)
+	$(CC) $(LDFLAGS) -o $(EXEC) $(OBJS)
+
+hypot.o: hypot.c
+	$(CC) $(CFLAGS) -c hypot.c
+
+mathlib.o: mathlib.c
+	$(CC) $(CFLAGS) -c mathlib.c
+
+clean:
+	rm -f $(EXEC) $(OBJS)
+```
+
+`clean` has no dependencies, and the command uses our variables to delete the files that it should. Let's try it, first using `make` to make sure our program is compiled.
+
+```
+$ make
+make: Nothing to be done for 'all'.
+$ ls
+hypot  hypot.c  hypot.o  Makefile  mathlib.c  mathlib.h  mathlib.o
+$ make clean
+rm -f hypot hypot.o mathlib.o
+$ ls
+hypot.c  Makefile  mathlib.c  mathlib.h
+```
+
+#### Automatically compiling object files
+
+Right now, if we added another C file to our program, we'd have to add a new target to our Makefile and copy the command to compile it. This can get unwieldy, and we run the risk of introducing a subtle bug by copying the command incorrectly.
+
+Fortunately, Make allows us to specify much more general rules. Specifically, we can tell it how to compile any object file from the corresponding C file:
+
+```makefile
+CC = clang
+CFLAGS = -Wall -Wextra -Werror -Wpedantic
+LDFLAGS = -lm
+EXEC = hypot
+OBJS = hypot.o mathlib.o
+
+all: $(EXEC)
+
+$(EXEC): $(OBJS)
+	$(CC) $(LDFLAGS) -o $(EXEC) $(OBJS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $<
+
+clean:
+	rm -f $(EXEC) $(OBJS)
+```
+
+The syntax here is tricky. The `%` symbols create a correspondence between the names of the object file and C file: any filename ending with `.o` depends on the same filename but with `.c` instead of `.o`. In the compilation command, `$<` gets replaced with the name of the dependency, i.e. the name of the C file.
+
+Let's check that this works, using `make clean` first to make sure it has to recompile everything:
+
+```
+$ make clean
+rm -f hypot hypot.o mathlib.o
+$ ls
+hypot.c  Makefile  mathlib.c  mathlib.h
+$ make
+clang -Wall -Wextra -Werror -Wpedantic -c hypot.c
+clang -Wall -Wextra -Werror -Wpedantic -c mathlib.c
+clang -lm -o hypot hypot.o mathlib.o
+$ ls
+hypot  hypot.c  hypot.o  Makefile  mathlib.c  mathlib.h  mathlib.o
+```
+
+And it does!
+
+#### Formatting with clang-format
+
+If you use [clang-format](https://clang.llvm.org/docs/ClangFormat.html) and have a configuration file (`.clang-format`) next to your code, you can add a target to run it with `make format` (here, the rest of the Makefile is omitted, since the target is not specific to our code):
+
+```makefile
+format:
+	clang-format -i -style=file *.[ch]
+```
+
+#### Static analysis with scan-build
+
+[scan-build](https://clang-analyzer.llvm.org/scan-build.html) is a program that detects additional problems with your code at compile time (that a compiler normally would not). We can also call it with a Makefile target:
+
+```makefile
+scan-build: clean
+	scan-build --use-cc=$(CC) make
+```
+
+This target isn't as straightforward as the clang-format one. Some details to note are:
+
+- scan-build's argument is the command that builds our program. Here, that is just `make`.
+- We list `clean` as a dependency. This ensures that when scan-build runs `make`, the whole program is rebuilt.
+- scan-build sometimes overrides the compiler used by Make. We specify `--use-cc=$(CC)` (effectively `--use-cc=clang`) to make sure that it will run using the same compiler that we normally use (as opposed to, say, GCC).
+
+Here's an example of running it:
+
+```
+$ make scan-build
+rm -f hypot hypot.o mathlib.o
+scan-build --use-cc=clang make
+scan-build: Using '/usr/bin/clang-12' for static analysis
+make[1]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[1]: Entering directory '/home/ben/code/c/ucsc-guide-hypot'
+/usr/bin/../lib/clang/ccc-analyzer -Wall -Wextra -Werror -Wpedantic -c hypot.c
+/usr/bin/../lib/clang/ccc-analyzer -Wall -Wextra -Werror -Wpedantic -c mathlib.c
+/usr/bin/../lib/clang/ccc-analyzer -lm -o hypot hypot.o mathlib.o
+make[1]: Leaving directory '/home/ben/code/c/ucsc-guide-hypot'
+scan-build: Analysis run complete.
+scan-build: Removing directory '/tmp/scan-build-2021-10-11-005941-146456-1' because it contains no reports.
+scan-build: No bugs found.
+```
