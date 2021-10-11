@@ -16,7 +16,7 @@ You can follow along with this guide on your own computer. All you'll need is fa
 
 ## Our program
 
-To get started, create an empty directory to hold all the files that we create. The name doesn't matter. Navigate into that directory, and create the following C file called `hypot.c`. This is the program that we will be working with. Given two side lengths of a right triangle, it calculates the length of the hypotenuse.
+To get started, create an empty directory to hold all the files that we create. The name doesn't matter. Navigate into that directory and create the following C file called `hypot.c`. This is the program that we will be working with. Given two side lengths of a right triangle, it calculates the length of the hypotenuse.
 
 ```c
 // hypot.c
@@ -65,7 +65,7 @@ int main(void) {
 
 You may already know the command to compile this using Clang:
 
-```bash
+```
 $ clang -Wall -Werror -Wextra -Wpedantic -o hypot hypot.c
 ```
 
@@ -105,7 +105,7 @@ You may know that in order to call math functions like `sqrt`, you need to do tw
 
 ### Header files
 
-Including a file with `#include` inserts its contents at the position of the `#include` statement, nothing more. Since `<math.h>` uses angle brackets instead of quotes, the preprocessor (which is responsible for processing includes, among other things) looks for a file in the _include path_, instead of the current directory. You can modify the include path, but the default (on Linux, at least) is `/usr/include`. This means that we are including `/usr/include/math.h`, a file that is included with the operating system. You can actually open and view this file! Sadly, it is full of macros and includes other files, so the actual declaration of `sqrt` is not easy to find, but you can imagine that somewhere in that file is the declaration:
+Including a file with `#include` inserts its contents at the position of the `#include` statement, nothing more. Since `<math.h>` uses angle brackets instead of quotes, the preprocessor (which is responsible for processing includes, among other things) looks for a file in the _include path_, instead of the current directory. You can modify the include path, but the default (on Linux, at least) is `/usr/include`. This means that we are including `/usr/include/math.h`, a file that comes with the operating system. You can actually open and view this file! Sadly, it is full of macros and includes other files, so the actual declaration of `sqrt` is not easy to find, but you can imagine that somewhere in that file is the declaration:
 
 ```c
 double sqrt(double x);
@@ -249,6 +249,8 @@ int main(void) {
 }
 ```
 
+We `#include` headers, not C files, because the C file is going to be compiled separately and linked. The file with the include statement only needs the declarations of functions, not definitions.
+
 You may already be thinking of some other changes we'll have to make to `hypot.c`. Let's add `mathlib.c` as an input file to our last compilation command, and try compiling this:
 
 ```
@@ -300,9 +302,9 @@ An executable file (like the `hypot` file that we are creating) contains several
 - an entry point (in C, the `main` function) where execution should begin
 - data that the program will need when it runs (e.g. the `"side a: "`) string that we print
 - space for global variables
-- list of dynamic libraries that should be loaded
+- a list of dynamic libraries that should be loaded
 
-An _object file_ is similar to an executable, but different in some important ways. An executable file is your whole program, but for programs with multiple source files, an object file is the compiled version of a single C file. Since object files cannot run on their own, they don't have an entry point (they could have a function called `main`, however). Also, in an executable file, every function that's referenced must be defined either in the executable itself, or in a dynamic library that is linked. Object files can reference external functions.
+An _object file_ is similar to an executable, but different in some important ways. At the fundamental level, object files still contain executable code. An executable file is your whole program, but for programs with multiple source files, an object file is the compiled version of a single C file. Since object files cannot run on their own, they don't have an entry point (they could have a function called `main`, however). Also, in an executable file, every function that's referenced must be defined either in the executable itself, or in a dynamic library that is linked. Object files can reference external functions.
 
 To compile a C program, you _compile_ each C file into an object file, and then _link_ those object files into one executable. Even if you don't list these steps explicitly, Clang still performs both steps; it just deletes the object files when it's done. The linking process entails:
 
@@ -407,7 +409,7 @@ hypot: hypot.o mathlib.o
 	clang -lm -o hypot hypot.o mathlib.o
 ```
 
-This is one _target_. A target begins with the line `target: dependencies`, so in this case we are saying that `hypot` is a target which depends on `hypot.o` and `mathlib.o`. You can see that, after all the variables have been substituted, the command here is the same as we were already using to link the executable. After this line come the command(s) to build that file, indented with tabs.
+This is one _target_. A target begins with the line `target: dependencies`, so in this case we are saying that `hypot` is a target which depends on `hypot.o` and `mathlib.o`. After this line come the command(s) to build that file, indented with tabs. You can see that, after all the variables have been substituted, the command here is the same as we were already using to link the executable.
 
 Let's keep going! Next we'll add targets to build our object files:
 
@@ -488,7 +490,7 @@ mathlib.o: mathlib.c
 	$(CC) $(CFLAGS) -c mathlib.c
 ```
 
-We've listed `hypot` as the sole dependency of the `all` target. Note that there are no commands to build `all`, because it will still run the commands to build `hypot`. Feel free to try deleting the executable and/or object files and running `make` again.
+We've listed `hypot` as the sole dependency of the `all` target. If there were a file called `all` in our project, we would need to name this target something else, because Make would think that it had already been built. Note that there are no commands to build `all`, because it will still run the commands to build `hypot`. Feel free to try deleting the executable and/or object files and running `make` again.
 
 #### Cleanup
 
@@ -594,7 +596,7 @@ scan-build: clean
 This target isn't as straightforward as the clang-format one. Some details to note are:
 
 - scan-build's argument is the command that builds our program. Here, that is just `make`.
-- We list `clean` as a dependency. This ensures that when scan-build runs `make`, the whole program is rebuilt.
+- We list `clean` as a dependency. This ensures that all object files and executables are deleted before we run scan-build, so when scan-build runs `make`, the whole program is rebuilt.
 - scan-build sometimes overrides the compiler used by Make. We specify `--use-cc=$(CC)` (effectively `--use-cc=clang`) to make sure that it will run using the same compiler that we normally use (as opposed to, say, GCC).
 
 Here's an example of running it:
@@ -619,7 +621,7 @@ scan-build: No bugs found.
 
 You've now seen everything you need to know to use Makefiles. In this last section, I will demonstrate how the build process would change if you wanted to add more C files to your project. We're going to add one more C file and also have our Makefile compile a second binary in addition to `hypot`.
 
-In the spirit of assignment 2, we'll build a test harness that compares the results of our `my_hypot` function with the standard library's `hypot`. The results should be identical, since we're also using the standard library's `sqrt` function and the calculation for what to take the square root of is trivial, but doing this will let us expand on our program.
+In the spirit of CSE 13S assignment 2, we'll build a test harness that compares the results of our `my_hypot` function with the standard library's `hypot`. The results should be identical, since we're also using the standard library's `sqrt` function and the calculation for what to take the square root of is trivial, but doing this will let us expand on our program.
 
 Here's the code for the test harness. Save it in `hypot-test.c`:
 
@@ -634,7 +636,7 @@ int main(void) {
     for (double a = 1.0; a <= 4.0; a += 1.0) {
         for (double b = 1.0; b <= 4.0; b += 1.0) {
             double hypot_result = hypot(a, b), my_hypot_result = my_hypot(a, b),
-                         difference = fabs(hypot_result - my_hypot_result);
+                   difference = fabs(hypot_result - my_hypot_result);
             printf("a = %.0f, b = %.0f: hypot = %16.15lf, my_hypot = %16.15lf, diff "
                    "= %16.15lf\n",
                    a, b, hypot_result, my_hypot_result, difference);
@@ -668,3 +670,103 @@ a = 4, b = 2: hypot = 4.472135954999580, my_hypot = 4.472135954999580, diff = 0.
 a = 4, b = 3: hypot = 5.000000000000000, my_hypot = 5.000000000000000, diff = 0.000000000000000
 a = 4, b = 4: hypot = 5.656854249492381, my_hypot = 5.656854249492381, diff = 0.000000000000000
 ```
+
+Next, let's modify our Makefile to automatically build `hypot-test`. First, we'll rename the existing `OBJS` to `HYPOT_OBJS`, since we'll eventually create a new list of object files that are needed for `hypot-test`. We'll also remove the `EXEC` variable and instead write `hypot` directly:
+
+```makefile
+CC = clang
+CFLAGS = -Wall -Wextra -Werror -Wpedantic
+LDFLAGS = -lm
+HYPOT_OBJS = hypot.o mathlib.o
+
+all: hypot
+
+hypot: $(HYPOT_OBJS)
+	$(CC) $(LDFLAGS) -o hypot $(HYPOT_OBJS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $<
+
+clean:
+	rm -f hypot $(HYPOT_OBJS)
+
+format:
+	clang-format -i -style=file *.[ch]
+
+scan-build: clean
+	scan-build --use-cc=$(CC) make
+```
+
+Now we can add `HYPOT_TEST_OBJS` with the object files that this program needs, as well as a `hypot-test` target. We'll also add `hypot-test` as a dependency of the `all` target, so that running `make` with no arguments builds both `hypot` and `hypot-test`. And finally, we'll add the executable and object files to our `clean` target:
+
+```makefile
+CC = clang
+CFLAGS = -Wall -Wextra -Werror -Wpedantic
+LDFLAGS = -lm
+HYPOT_OBJS = hypot.o mathlib.o
+HYPOT_TEST_OBJS = hypot-test.o mathlib.o
+
+all: hypot hypot-test
+
+hypot: $(HYPOT_OBJS)
+	$(CC) $(LDFLAGS) -o hypot $(HYPOT_OBJS)
+
+hypot-test: $(HYPOT_TEST_OBJS)
+	$(CC) $(LDFLAGS) -o hypot-test $(HYPOT_TEST_OBJS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $<
+
+clean:
+	rm -f hypot hypot-test $(HYPOT_OBJS) $(HYPOT_TEST_OBJS)
+
+format:
+	clang-format -i -style=file *.[ch]
+
+scan-build: clean
+	scan-build --use-cc=$(CC) make
+```
+
+Let's test this out by running `make clean` and then having it recompile everything with `make`:
+
+```
+$ ls
+hypot    hypot.o     hypot-test.c  Makefile   mathlib.h
+hypot.c  hypot-test  hypot-test.o  mathlib.c  mathlib.o
+$ make clean
+rm -f hypot hypot-test hypot.o mathlib.o hypot-test.o mathlib.o
+$ ls
+hypot.c  hypot-test.c  Makefile  mathlib.c  mathlib.h
+$ make
+clang -Wall -Wextra -Werror -Wpedantic -c hypot.c
+clang -Wall -Wextra -Werror -Wpedantic -c mathlib.c
+clang -Wall -Wextra -Werror -Wpedantic -c hypot-test.c
+clang -lm -o hypot hypot.o mathlib.o
+clang -lm -o hypot-test hypot-test.o mathlib.o
+$ ls
+hypot    hypot.o     hypot-test.c  Makefile   mathlib.h
+hypot.c  hypot-test  hypot-test.o  mathlib.c  mathlib.o
+$ ./hypot
+side a: 3
+side b: 4
+c = 5.000000
+$ ./hypot-test
+a = 1, b = 1: hypot = 1.414213562373095, my_hypot = 1.414213562373095, diff = 0.000000000000000
+a = 1, b = 2: hypot = 2.236067977499790, my_hypot = 2.236067977499790, diff = 0.000000000000000
+a = 1, b = 3: hypot = 3.162277660168380, my_hypot = 3.162277660168380, diff = 0.000000000000000
+a = 1, b = 4: hypot = 4.123105625617661, my_hypot = 4.123105625617661, diff = 0.000000000000000
+a = 2, b = 1: hypot = 2.236067977499790, my_hypot = 2.236067977499790, diff = 0.000000000000000
+a = 2, b = 2: hypot = 2.828427124746190, my_hypot = 2.828427124746190, diff = 0.000000000000000
+a = 2, b = 3: hypot = 3.605551275463989, my_hypot = 3.605551275463989, diff = 0.000000000000000
+a = 2, b = 4: hypot = 4.472135954999580, my_hypot = 4.472135954999580, diff = 0.000000000000000
+a = 3, b = 1: hypot = 3.162277660168380, my_hypot = 3.162277660168380, diff = 0.000000000000000
+a = 3, b = 2: hypot = 3.605551275463989, my_hypot = 3.605551275463989, diff = 0.000000000000000
+a = 3, b = 3: hypot = 4.242640687119285, my_hypot = 4.242640687119285, diff = 0.000000000000000
+a = 3, b = 4: hypot = 5.000000000000000, my_hypot = 5.000000000000000, diff = 0.000000000000000
+a = 4, b = 1: hypot = 4.123105625617661, my_hypot = 4.123105625617661, diff = 0.000000000000000
+a = 4, b = 2: hypot = 4.472135954999580, my_hypot = 4.472135954999580, diff = 0.000000000000000
+a = 4, b = 3: hypot = 5.000000000000000, my_hypot = 5.000000000000000, diff = 0.000000000000000
+a = 4, b = 4: hypot = 5.656854249492381, my_hypot = 5.656854249492381, diff = 0.000000000000000
+```
+
+It all worked! Make handles building multiple binaries very well—notice how it only built `mathlib.c` once, even though it is needed by both binaries. Also, this Makefile compiles both binaries by default (thanks to the `all` target), but you can also compile only one binary with `make hypot` or `make hypot-test`.
