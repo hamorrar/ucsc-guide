@@ -396,6 +396,97 @@ EXEC = hypot
 OBJS = hypot.o mathlib.o
 
 $(EXEC): $(OBJS)
-	$(CC) $(CFLAGS) -o $(EXEC) $(OBJS)
+	$(CC) $(LDFLAGS) -o $(EXEC) $(OBJS)
 ```
 
+Make sure the last line is indented with tabs, not spaces. Make requires tabs.
+
+This looks complicated! The main thing going on is that `$(VAR)` gets replaced with the variable `VAR`. If we perform those replacements manually, those last two lines look like:
+
+```makefile
+hypot: hypot.o mathlib.o
+	clang -lm -o hypot hypot.o mathlib.o
+```
+
+This is one _target_. A target begins with the line `target: dependencies`, so in this case we are saying that `hypot` is a target which depends on `hypot.o` and `mathlib.o`. You can see that, after all the variables have been substituted, the command here is the same as we were already using to link the executable. After this line come the command(s) to build that file, indented with tabs.
+
+Let's keep going! Next we'll add targets to build our object files:
+
+```makefile
+CC = clang
+CFLAGS = -Wall -Wextra -Werror -Wpedantic
+LDFLAGS = -lm
+EXEC = hypot
+OBJS = hypot.o mathlib.o
+
+$(EXEC): $(OBJS)
+	$(CC) $(LDFLAGS) -o $(EXEC) $(OBJS)
+
+hypot.o: hypot.c
+	$(CC) $(CFLAGS) -c hypot.c
+
+mathlib.o: mathlib.c
+	$(CC) $(CFLAGS) -c mathlib.c
+```
+
+We list the C files as dependencies of these targets to ensure that each object file gets rebuilt when its corresponding C file changes. But unlike the previous example, the C files will not get their own targets in the Makefile, since those files are created by us and not Make. Since Make knows it isn't responsible for creating the C files, it will just check that each one exists before it tries to build the object file, and throw an error if one is missing.
+
+We're going to add some more to the Makefile, but this is already enough to build our program! Let's try it out. To build a Make target, just run `make <target name>` in the directory containing the Makefile. If you don't specify a target, it will use the first one that is defined. In our Makefile, that is the `$(EXEC)` rule, so we are good to go. Make sure to delete your object files and executable, if you still have them from previous sections.
+
+```
+$ ls
+hypot  hypot.c  hypot.o  Makefile  mathlib.c  mathlib.h  mathlib.o
+$ rm hypot *.o
+$ ls
+hypot.c  Makefile  mathlib.c  mathlib.h
+$ make
+clang -Wall -Wextra -Werror -Wpedantic -c hypot.c
+clang -Wall -Wextra -Werror -Wpedantic -c mathlib.c
+clang -lm -o hypot hypot.o mathlib.o
+$ ls
+hypot  hypot.c  hypot.o  Makefile  mathlib.c  mathlib.h  mathlib.o
+$ ./hypot
+side a: 2
+side b: 3
+c = 3.605551
+```
+
+It worked! Note how Make prints out the commands that it runs. Let's try compiling it again:
+
+```
+$ make
+make: 'hypot' is up to date.
+```
+
+It didn't recompile because it has already built everything that it needs, and we didn't change our C files.
+
+### A more advanced Makefile
+
+This Makefile works fine, but it can do more. We're going to make a few changes.
+
+#### Separate `all` target
+
+In a more advanced project, you might have multiple executable files that should be compiled. Right now, we couldn't run `make` to compile multiple executables, because it only runs the first target by default.
+
+We can use something called a _phony target_ to remedy this. A phony target is a target that doesn't correspond to a single file. In this case, we create a target called `all` with all our executables (there is still only one, but there could be more) as dependencies, and put it first in the Makefile:
+
+```makefile
+CC = clang
+CFLAGS = -Wall -Wextra -Werror -Wpedantic
+LDFLAGS = -lm
+EXEC = hypot
+OBJS = hypot.o mathlib.o
+
+all: $(EXEC)
+
+$(EXEC): $(OBJS)
+	$(CC) $(LDFLAGS) -o $(EXEC) $(OBJS)
+
+hypot.o: hypot.c
+	$(CC) $(CFLAGS) -c hypot.c
+
+mathlib.o: mathlib.c
+	$(CC) $(CFLAGS) -c mathlib.c
+```
+
+We've listed `hypot` as the sole dependency of the `all` target. Note that there are no commands to build `all`, because it will still run the commands to build `hypot`.
