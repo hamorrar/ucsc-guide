@@ -1,7 +1,6 @@
-{{ define "main" }}
 <div class="td-content">
 	<h1>{{ .Title }}</h1>
-  {{ with .Params.description }}<div class="lead">{{ . | markdownify }}</div>{{ end }}
+	{{ with .Params.description }}<div class="lead">{{ . | markdownify }}</div>{{ end }}
 	<div class="td-byline mb-4">
 		{{ with .Params.author }}{{ T "post_byline_by" }} <b>{{ . | markdownify }}</b> |{{ end}}
 		<time datetime="{{  $.Date.Format "2006-01-02" }}" class="text-muted">{{ $.Date.Format $.Site.Params.time_format_blog  }}</time>
@@ -22,15 +21,9 @@
 		{{ end }}
 	</header>
 	{{ .Content }}
-        {{ partial "section-index.html" . }}
-	{{ if (and (not .Params.hide_feedback) (.Site.Params.ui.feedback.enable) (.Site.GoogleAnalytics)) }}
-		{{ partial "feedback.html" .Site.Params.ui.feedback }}
-		<br />
-	{{ end }}
-	{{ if (.Site.DisqusShortname) }}
+	{{ if (.Site.Params.DisqusShortname) }}
 		<br />
 		{{ partial "disqus-comment.html" . }}
+		<br />
 	{{ end }}
-	{{ partial "page-meta-lastmod.html" . }}
 </div>
-{{ end }}
