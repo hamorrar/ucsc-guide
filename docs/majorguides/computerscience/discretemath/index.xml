@@ -1,0 +1,388 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Unofficial UCSC Student Guide – Discrete Math</title><link>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/discretemath/</link><description>Recent content in Discrete Math on Unofficial UCSC Student Guide</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 01 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/discretemath/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Proofs</title><link>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/discretemath/proofs/</link><pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate><guid>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/discretemath/proofs/</guid><description>
+&lt;p>The proof building skills you gain from this class will be foundational for your success in CSE 102. They may look intimidating but the most comforting advice I have received from my teachers and tutors is that notation is half the problem. Once you work your way through the notations in the problem, you can start to understand what you are looking at and think of approaches to solutions. The following are just previews into common proof techniques from CSE 16 and 102.&lt;/p>
+&lt;blockquote>
+&lt;p>Note: Sometimes professors say which proof technique to use and sometimes it&amp;rsquo;s not explicitly stated, so you will need to pick a valid proof technique that can get you the desired result. So these are just good skills to keep in mind when creating a proof. Don&amp;rsquo;t worry - proof get a little easier and make more sense with practice!&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;h2 id="contradiction">&lt;strong>Contradiction&lt;/strong>&lt;/h2>
+&lt;p>The starting point for a proof by contradiction can be a little tricky, but it is fun when you get the hang of it. A common set up is simply &amp;ldquo;prove this&amp;rdquo; and it gives you some expression to prove. The way a proof by contradiction works is that you take the negation of what was given and assme those are True as your &amp;ldquo;givens&amp;rdquo; to start with, then you continue using those negated expressions to see if you derive a contradiction (or something that cannot possibly be True). I will give and explain one example below.&lt;/p>
+&lt;h3 id="example">Example&lt;/h3>
+&lt;p>Prove the $\sqrt{2}$ is &lt;em>irrational&lt;/em>.&lt;/p>
+&lt;p>The first thing to do in a proof by contraction is to negate what is given and then assume that as a hypothesis.&lt;/p>
+&lt;p>We assume $\sqrt{2}$ is &lt;em>rational&lt;/em> and use various mathematical definitions to try to find a contradiction. The idea here is that we have to explore the world to see what would happen if $\sqrt{2}$ is indeed &lt;em>rational&lt;/em> and look for something that doesn&amp;rsquo;t make sense. In this problem, we will see that the greatest common divisor between two number is found to be 1 and not 1 at the same time. This is the contradiction because this cannot be true. So we can conclude the $\sqrt{2}$ is &lt;em>irrational&lt;/em> because if was &lt;em>rational&lt;/em> then we have shown that a contradiction arises.&lt;/p>
+&lt;blockquote>
+&lt;p>Note: $gcd(a, b)$ is the greatest common divisor between $a$ and $b$. In this problem, we will be concerned about $gcd(a, b) = 1$, which means that $\frac{a}{b}$ is in its simplest form and $gcd(a, b) \neq 1$, which means $\frac{a}{b}$ is not in its simplest form.&lt;/p>
+&lt;/blockquote>
+&lt;p>The proof goes like this:&lt;/p>
+&lt;ul>
+&lt;li>Assume $\sqrt{2}$ is rational.&lt;/li>
+&lt;li>This means $\sqrt{2}$ made up of some $\frac{a}{b}$ where $a, b \in \mathbb{Z}$ and $b \neq 0$ and $gcd(a, b) = 1$.&lt;/li>
+&lt;li>Now, $\sqrt{2} = \frac{a}{b}$.&lt;/li>
+&lt;li>Some rearranging gives, $2 = \frac{a^2}{b^2}$.&lt;/li>
+&lt;li>Solve for $a^2$ gives $a^2 = 2b^2$.&lt;/li>
+&lt;li>Using a theorem that says if $a^2$ then, $a$ is even too (it&amp;rsquo;s a fun, quick proof to prove this theorem, try it), we can see that 2 divides $a$ evenly because the theorem says $a$ is even, so it&amp;rsquo;s a multiple of 2.&lt;/li>
+&lt;li>Then from $2 = \frac{a^2}{b^2}$, we can solve for $b^2$ to get $b^2 = 2a^2$.&lt;/li>
+&lt;li>Same as above, we can see that $b^2$ is even and it follows that $b$ is even.&lt;/li>
+&lt;li>Now, we have something that doesn&amp;rsquo;t make sense. We found that $a$ and $b$ are both even, which means that 2 can divide them both, which means $gcd(a, b) \neq 1$. However, earlier in proof, we stated that the $gcd(a, b)$ is 1. These both cannot be true at the same time, so we can conclude that the $\sqrt{2}$ is irrational because otherwise there would be an inconsistency.&lt;/li>
+&lt;/ul>
+&lt;h2 id="formal-proof-rules">&lt;strong>Formal Proof Rules&lt;/strong>&lt;/h2>
+&lt;p>Before we get to the next techniques, you need to be familiar with what is and how to make a formal proof. In general, these are made with two columns, left side has the mathematical expressions and the work shown and the right side as the name of the rule or explanation of the reasoning that you used to get to that result. A couple rules and then the example to tie it all together:&lt;/p>
+&lt;ol>
+&lt;li>Two columns: left has the actual expressions, right has the name of the the rule you applied and the line numbers for the expressions involved.&lt;/li>
+&lt;li>Number each line starting from 1.&lt;/li>
+&lt;/ol>
+&lt;p>I know it is annoying to always &amp;ldquo;show your work&amp;rdquo;, but it is easy to get lost or make a small mistake in the proof and then the answer is off or you cannot get to the correct answer. There are many ways to make a proof for a given problem, so these rules are in place to make it clear to the reader &lt;em>how&lt;/em> you solved it and to yourself to follow your process to easily backtrack if something went wrong. Believe me, it is a time saver.&lt;/p>
+&lt;hr>
+&lt;h2 id="contrapositive">Contrapositive&lt;/h2>
+&lt;p>The contrapositive is also an interesting proof technique. This technique uses the fact that $p \rightarrow q$ is logically equivalent to (i.e. the same as) $\neg q \rightarrow \neg p$. You can check this equivalence for yourself by applying the Definition of Implication to both statements and seeing that they are the same.&lt;/p>
+&lt;p>This may seem a bit unusual but it is incredibly useful to be able to rewrite a given problem in different ways and still maintain the same logical value. You can think of this as the same thing as simplifying or factoring an expression in Calculus - you get the same answer, but the manipulation to the expression makes it easier to work with.&lt;/p>
+&lt;h3 id="definition-of-even-and-odd">Definition of Even and Odd&lt;/h3>
+&lt;p>For the example below and for other proofs you may come across it is good to explicitly know the formal definitions of even and odd numbers.&lt;/p>
+&lt;ul>
+&lt;li>Odd: The number can be rewritten in the form of $x = 2m + 1$, where $m \in \mathbb{Z}$. You can try this with any integer for $m$ and see that $x$ will always be odd.&lt;/li>
+&lt;li>Even: The number can be rewritten in the form of $x = 2m$, where $m \in \mathbb{Z}$. You can try this with any integer for $m$ and see that $x$ will always be even.&lt;/li>
+&lt;/ul>
+&lt;h3 id="example-1">Example&lt;/h3>
+&lt;p>Prove that if $n^2$ is even, then $n$ is even.&lt;/p>
+&lt;p>If you try to prove this directly, it will be quite difficult. So, we will take the contrapositive and prove it indirectly using the 2 column formal proof layout with the math on the left and the reasoning on the right.&lt;/p>
+&lt;p>Contrapositive: Prove that if $n$ is odd, then $n^2$ is odd.&lt;/p>
+&lt;table>
+&lt;tr>
+&lt;th>Expressions&lt;/th>
+&lt;th>Reasoning&lt;/th>
+&lt;/tr>
+&lt;tr>
+&lt;td>1. $n$ is odd &lt;/td>
+&lt;td>Hypothesis 1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2. $n = 2p + 1$, where $p \in \mathbb{Z}$ ($p$ is an integer) &lt;/td>
+&lt;td>Definition of odd&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3. $n^2 = (2p + 1)^2$ &lt;/td>
+&lt;td>Logically/Mathematically equivalent to line 2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>4. $n^2 = 2(2p^2 + 2p) + 1$ &lt;/td>
+&lt;td>Logically/Mathematically equivalent to line 3 (multiplied the square and factored out 2)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>5. $n^2 = 2k + 1$, where $k = 2p^2 + 2p$ and $k \in \mathbb{Z}$ &lt;/td>
+&lt;td>Logically/Mathematically equivalent to line 4 (defined a new variable $k$ as an integer)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>6. $n^2$ is odd &lt;/td>
+&lt;td>Logically/Mathematically equivalent to line 5 by the definition of odd&lt;/td>
+&lt;/tr>
+&lt;/table>
+&lt;p>Notice how most of this proof was just applying the formal definition of odd numbers (which you already knew but not formally) and manipulating the expression until something useful came about. There is not too much to explain other than reading the proof and following along because most of it is things you already knew but just slightly more formal!&lt;/p>
+&lt;hr>
+&lt;h2 id="rules-of-inference">&lt;strong>Rules of Inference&lt;/strong>&lt;/h2>
+&lt;p>This handout will be your best friend when doing some more formal boolean algebra proofs (see the Proofs section here). Like the previous handout, I will explain one rule from this one so you know how to read and use it when you have a formal proof to solve.&lt;/p>
+&lt;div class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 548px">
+&lt;img class="card-img-top" src="https://hilalmorrar.com/ucsc-guide/ucsc-guide/docs/majorguides/computerscience/discretemath/proofs/rules_of_inference_hu9cef0f421f663295dd71422a8869daaf_35575_538x591_fill_catmullrom_smart1_2.png" width="538" height="591">
+&lt;div class="card-body px-0 pt-2 pb-0">
+&lt;p class="card-text">
+A reference chart for the rules of inference.
+&lt;small class="text-muted">&lt;br/>Diagram: skedsoft.com&lt;/small>&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;p>(Click &lt;a href="rules_of_inference.png">here&lt;/a> to download the image if you want to save it for safe keeping.)&lt;/p>
+&lt;h3 id="notation-in-the-rules-of-inference">Notation in the Rules of Inference&lt;/h3>
+&lt;p>The $\lnot$ symbol is another way is representing a negation/inversion. The $\therefore$ symbol is called &amp;ldquo;therefore&amp;rdquo; and means therefore, you can think of it as an equal sign for now. It will make more sense in the example below. That is all the &lt;em>new&lt;/em> notation in the handout! The rest should be explained in previous parts of the guide!&lt;/p>
+&lt;h3 id="rules-of-inference-example">Rules of Inference Example&lt;/h3>
+&lt;p>I think the easiest way to understand how to use and read this chart is by making a small proof and walking you through my thought process! I will put the proof up first then explain it under.&lt;/p>
+&lt;p>Given: $(p \land q) \rightarrow r$, $p \rightarrow p$, $q$. Prove $r$.&lt;/p>
+&lt;table>
+&lt;tr>
+&lt;th>Expressions&lt;/th>
+&lt;th>Reasoning&lt;/th>
+&lt;/tr>
+&lt;tr>
+&lt;td>1. $(p \land q) \rightarrow r$ &lt;/td>
+&lt;td>Hypothesis 1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2. $q \rightarrow p$ &lt;/td>
+&lt;td>Hypothesis 2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3. $q$ &lt;/td>
+&lt;td>Hypothesis 3&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>4. $p$ &lt;/td>
+&lt;td>Modus Ponens, lines 2 and 3&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>5. $p \land q$ &lt;/td>
+&lt;td>Conjunction, lines 3 and 4&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>6. $r$ &lt;/td>
+&lt;td>Modus Ponens, lines 1 and 5&lt;/td>
+&lt;/tr>
+&lt;/table>
+&lt;p>You are given three &amp;ldquo;hypotheses&amp;rdquo;, which are the expressions that are given to you to use to solve for $r$. You are trying to derive $r$ from these three hypotheses. I like to list out the given hypotheses first, so they are there when I want to use them later, but you can write them down you need them as you go through the proof too.&lt;/p>
+&lt;p>Now to get to line 4, I look at the rules chart and I see what kind of rules I can apply to any previous lines and see if that gets me anything that can be useful. In this case, I see that Modus Ponens says if you have a line that says $p$ and a line that says $p \rightarrow q$, you can get $q$ as a result. I know the letters are a bit off but that is okay as long as you keep it consistent, you can make a substitution, so you can temporarily think of the $p$ in the proof as the $q$ in the chart and vice versa.&lt;/p>
+&lt;p>The logic behind Modus Ponens applied to line 4 is that if you have the value of $q$ in line 3 and you have the expression that says $q$ implies the value of $p$, then you can use $q$ you have to get the value of $p$. I think of this one as &amp;ldquo;unlocking&amp;rdquo;. I need to get a $q$ because I have something that tells me that $q$ &amp;ldquo;unlocks&amp;rdquo; a new value that I need, which is $p$.&lt;/p>
+&lt;p>Put into a more concrete example, let&amp;rsquo;s say $q =$ it is raining and $p =$ get an umbrella. Then you have a line that says $q \rightarrow p$ (i.e &amp;ldquo;if it is raining, then get an umbrella). You can observe that is raining, so we have established $q$ to be True (which is what line 3 represents in the proof). We have a statement (the implication arrow) that says what to do if it is raining, so we can conclude $p$ from that, which is to get an umbrella.&lt;/p>
+&lt;p>In line 5 of the proof, this is using the Conjunction rule, which allows you to combine any expressions in the proof so far with an AND ($\land$) between them. In this case, I see that it would helpful to do that because Hypothesis 1 on line says that if you have $p \land q$, you can get $r$, which is what we need.&lt;/p>
+&lt;p>Finally, I apply Modus Ponens again to lines 1 and 5 to get $r$ from $p \land q$ and $(p \land q) \rightarrow r$.&lt;/p>
+&lt;hr>
+&lt;h2 id="induction">&lt;strong>Induction&lt;/strong>&lt;/h2>
+&lt;p>Induction is usually the proof technique that is hardest to grasp in my experience working with students, but it gets easier with more practice problems.&lt;/p>
+&lt;p>The easiest introduction to the concept here is to think of a staircase. In order to begin walking on the staircase to get to each next step, you must first get on the very first step, but when you get on the first step, you know know how to get to the next step. So you use that information to get you to each next step until you get to the end.&lt;/p>
+&lt;p>In inductive proofs, it is a similar flow: the first &amp;ldquo;step in the stair case&amp;rdquo; is a mathematical expression that must be established as true. Then you use that proven statement to help you prove each next step.&lt;/p>
+&lt;p>There are two types of induction: weak and strong.&lt;/p>
+&lt;h3 id="weak-induction">Weak Induction&lt;/h3>
+&lt;p>Putting the staircase analogy formally, $p(n) \rightarrow p(n+1)$, where $n \in \mathbb{N}$.&lt;/p></description></item><item><title>Docs: Logic</title><link>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/discretemath/logic/</link><pubDate>Wed, 08 Sep 2021 00:00:00 +0000</pubDate><guid>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/discretemath/logic/</guid><description>
+&lt;p>The knowledge you gain about logic from Discrete Math (CSE 16) and Computer Systems and Assembly Language (CSE 12) will be some of the most commonly used skills in your career because of how frequently we use conditional statements and try to simplify them in code.&lt;/p>
+&lt;h2 id="definitions">Definitions&lt;/h2>
+&lt;ul>
+&lt;li>Bit: a bit is a binary value that is a 0 or a 1. Just one, not both, and nothing in between.&lt;/li>
+&lt;li>Binary: a number system used in computer science that has only the numbers 0 and 1.&lt;/li>
+&lt;li>Boolean: only has the value of True or False. Just one, not both, and nothing in between.&lt;/li>
+&lt;li>Proposition: a logical expression that can be evalutated to a True or False value.&lt;/li>
+&lt;/ul>
+&lt;h2 id="logic-gates">&lt;strong>Logic Gates&lt;/strong>&lt;/h2>
+&lt;p>This is one of the most common concepts you will come across when doing any programming. So, you will eventually memorize these, if you have not seen them before just from how often you will need to use them. All of the following gates are boolean/binary operations, which means that the inputs and outputs can only be True (1) or False (0) and nothing else and nothing in between.&lt;/p>
+&lt;hr>
+&lt;h3 id="and">AND&lt;/h3>
+&lt;p>The AND gate can take in any number of input greater than 1. The truth table for the AND gate and its appearance in digital logic design is shown below.&lt;/p>
+&lt;p>In short, the AND gate returns/outputs a True (1), &lt;em>only&lt;/em> when &lt;em>all&lt;/em> of its inputs are True (1). It returns/outputs a False (0) otherwise (i.e. when at least one input is False (0) ).&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Example: You want to check if A &lt;strong>AND&lt;/strong> B &lt;strong>AND&lt;/strong> C &lt;strong>AND&lt;/strong> D are all True (1).&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Example: You are making a new social media and working on how to have a user create a new account. You need to check if the user entered a valid email &lt;strong>AND&lt;/strong> they are over a certain age &lt;strong>AND&lt;/strong> entered a secure password.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="or">OR&lt;/h3>
+&lt;p>The OR gate can take in any number of input greater than 1. The truth table for the OR gate and its appearance in digital logic design is shown below.&lt;/p>
+&lt;p>In short, the OR gate returns/outputs a True (1), when &lt;em>at least&lt;/em> one of its inputs are True (1). The other inputs can be anything else - there just has to be at least one True (1) in the inputs. It returns/outputs False (0) when all of the inputs are False (0).&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Example: You want to check if any one of A &lt;strong>OR&lt;/strong> B &lt;strong>OR&lt;/strong> C &lt;strong>OR&lt;/strong> D are True (1).&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Example: You are making a scheduler. You want to check if the timer for the current task at hand has run out &lt;strong>OR&lt;/strong> if the current task has finished so you can move on to another task. (This is one algorithm that a CPU may use schedule tasks in your computer!)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="not">NOT&lt;/h3>
+&lt;p>The NOT gate (also called an inverter) can take in 1 input and invert it. The truth table for the NOT gate and its appearance in digital logic design is shown below.&lt;/p>
+&lt;p>In short, if the input is a True (1), then the output is a False (0). If the input is a False (0), then the output is a True (1).&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Example: You want to invert the truth value of one variable A.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Example: You are making a game and want to check when the player in the game is alive or dead so you know to continue the game or display the &amp;ldquo;game over&amp;rdquo; message. You make a conditional statement to continue running the game while the player is &lt;strong>NOT&lt;/strong> dead.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="xor">XOR&lt;/h3>
+&lt;p>The XOR gate can take any number of input greater than 1. The truth table for the XOR gate and its appearance in digital logic design is shown below. XOR stands for &amp;ldquo;exclusive or&amp;rdquo;, so one or the other but not both. The use of a XOR gate is not as common as the previous gates, but it still comes up and good to know.&lt;/p>
+&lt;p>In short, the XOR gate returns/outputs a True (1), if only 1 of the inputs is True (1) and False (0) otherwise.&lt;/p>
+&lt;ul>
+&lt;li>Example: A server sends 4 bits to a client and calculates the XOR of the 4 bits and the result is 1 and appends this resulting bit to the 4 (now 5) bit message to the client. The client can XOR the first 4 bits and if the result of the XOR is not the same as what the 5th bit says, then the message has been corrupted in transmission. But this is not a complete check since the message can be corrupted in a way that the server and client XOR results still line up.&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="opposite-gates">Opposite Gates&lt;/h3>
+&lt;p>Each one of the gates above have one that is the opposite as what it is normally. The AND gate has its opposite called NAND gate. OR has NOR. NOT/NO has BUFFER/YES. XOR has XNOR. The truth tables and digital logic design for all of these gates are also below. Essentially, just take the outputs of the normal gate and invert them and that is the truth table for the corresponding opposite gate.&lt;/p>
+&lt;hr>
+&lt;h2 id="truth-tables">&lt;strong>Truth Tables&lt;/strong>&lt;/h2>
+&lt;p>Truth tables can be tedious to make if there are a lot of inputs, but it is one of the most effective ways to visualize a problem. Similar to how Venn Diagrams are useful to help understand some set theory problems, truth tables are an excellent way to check if two statements are equivalent or not or simply evaluate an expression to see its resulting truth value.&lt;/p>
+&lt;p>Here is the visual for all of the logic gates described above. Now let us see how to read it.&lt;/p>
+&lt;div class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 600px">
+&lt;img class="card-img-top" src="https://hilalmorrar.com/ucsc-guide/ucsc-guide/docs/majorguides/computerscience/discretemath/logic/gates_truth_tables_hu58c4ef95e3bb196dfc1e80ce989a0e84_21718_590x290_fill_q75_catmullrom_smart1.jpg" width="590" height="290">
+&lt;div class="card-body px-0 pt-2 pb-0">
+&lt;p class="card-text">
+A visual guide to the common logic gates.
+&lt;small class="text-muted">&lt;br/>Diagram: Proprofs.com&lt;/small>&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;p>(Click &lt;a href="gates_truth_tables.jpg">here&lt;/a> to download the image if you want to save it for safe keeping.)&lt;/p>
+&lt;p>The $A$ and $B$ on the left columns are example inputs to the gate. Remember these can only be boolean/binary True (1)/False (0). They can the results of previously evaluated expression or a simple 1 or 0 as you see in the tables.&lt;/p>
+&lt;blockquote>
+&lt;p>Notice that the inputs start at all 0 and then slowly work their way to all 1 at the bottom and that all of these rows make up every single possible combination of inputs that this gate have take. These are only 2 input gates, but you can come up with the tables for more inputs or Google them.&lt;/p>
+&lt;/blockquote>
+&lt;p>Now, look at the table one row at a time. Those two inputs get that gate operation applied to them and then the result is in the right side column.&lt;/p>
+&lt;hr>
+&lt;h2 id="laws-of-logic">&lt;strong>Laws of Logic&lt;/strong>&lt;/h2>
+&lt;p>This handout will be your best friend when working with logical expressions/equations that you need to evaluate or simplify. I will explain one rule on the handout so you know how to read and use it.&lt;/p>
+&lt;div class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 881px">
+&lt;img class="card-img-top" src="https://hilalmorrar.com/ucsc-guide/ucsc-guide/docs/majorguides/computerscience/discretemath/logic/logic_laws_hue400055917ee8efd2c563c4b06d436dc_87956_871x729_fill_catmullrom_smart1_2.png" width="871" height="729">
+&lt;div class="card-body px-0 pt-2 pb-0">
+&lt;p class="card-text">
+A reference chart for the laws of logic.
+&lt;small class="text-muted">&lt;br/>Diagram: math.stackexchange.com&lt;/small>&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;p>(Click &lt;a href="logic_laws.jpg">here&lt;/a> to download the image if you want to save it for safe keeping.)&lt;/p>
+&lt;h3 id="notation-in-the-logic-laws">Notation in the Logic Laws&lt;/h3>
+&lt;p>The &lt;strong>T&lt;/strong> and &lt;strong>F&lt;/strong> stand for True and False, respectively. The $p$, $q$, and $r$ used in the diagram are just variables that have boolean values. They can stand for a single variable in an equation or a piece of an expression (ex. $p$ can just be a variable in the equation as $p$ itself like how you can have $x$ in an expression in Calculus OR it can be representative for something bigger than a single variable like how you can have $x = (a + b/2)$ in Calculus). The $\equiv$ symbol means &amp;ldquo;logically equivalent&amp;rdquo; (i.e. equal to). The $\rightarrow$ symbol is called &amp;ldquo;the arrow of implication&amp;rdquo; read in an expression as &amp;ldquo;implies&amp;rdquo;. So $p \rightarrow q$ is read aloud as &amp;ldquo;$p$ implies $q$&amp;rdquo;.&lt;/p>
+&lt;blockquote>
+&lt;p>Note: The first one in Table 7 is called &amp;ldquo;Definition of Implication&amp;rdquo; and the first one in Table 8 is called &amp;ldquo;Definition of Equivalence/Biconditional&amp;rdquo;.&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;h3 id="duals">Duals&lt;/h3>
+&lt;p>Most of the logic laws have everything the same in their equations but the $\lor$ and $\land$ signs are flipped ($\lor$ becomes $\land$ and $\land$ becomes $\lor$). This operation of switching the ANDs and ORs is called &amp;ldquo;taking the dual&amp;rdquo;. In other words, one of these laws is the dual of the other (with the same name).&lt;/p>
+&lt;blockquote>
+&lt;p>Note: The Double Negation, Defintion of Implication, and Definition of Equivalence do not have any duals.&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;h3 id="logic-law-handout-example">Logic Law Handout Example&lt;/h3>
+&lt;p>Let us take a look at the Commutative Laws. Notice how there are two Commutative Laws.&lt;/p>
+&lt;p>For the first Commutative Law, it says (in English): &amp;ldquo;the (truth) value of $p$ OR&amp;rsquo;ed with the (truth) value of $q$ is logically equivalent to the (truth) value of $q$ OR&amp;rsquo;ed with the (truth) value of $p$&amp;rdquo;. Notice how this is the same exact thing that you have seen before in previous math classes: $x + y = y + x$&amp;hellip; same thing!&lt;/p>
+&lt;hr></description></item><item><title>Docs: Set Theory</title><link>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/discretemath/settheory/</link><pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate><guid>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/discretemath/settheory/</guid><description>
+&lt;p>Set theory is the branch of mathematical logic that studies sets, which can be informally described as collections of objects. Founded by German mathematicians Richard Dedekind and Georg Cantor in the 1870s (&lt;a href="https://en.wikipedia.org/wiki/Set_theory">Wikipedia&lt;/a>).&lt;/p>
+&lt;h2 id="definitions">&lt;strong>Definitions&lt;/strong>&lt;/h2>
+&lt;h3 id="set">Set&lt;/h3>
+&lt;p>A collection of objects, where order and repetition does not matter. Sets can hold any type of objects, not strictly 1 character numbers or letters.&lt;/p>
+&lt;h4 id="set-notation">Set Notation&lt;/h4>
+&lt;p>Sets are usually surrounded by curly braces with commas separating elements and when assigned to a variable, the convention is to use a single capital letter (although there may be exceptions).&lt;/p>
+&lt;h3 id="element">Element&lt;/h3>
+&lt;p>The objects inside a set.&lt;/p>
+&lt;h4 id="element-notation">Element Notation&lt;/h4>
+&lt;p>When you want to note a specific element from a set, you use the $\in$ symbol. When an element is not in a set, you use the $\notin$ symbol.&lt;/p>
+&lt;ul>
+&lt;li>Example: Written as $1 \in A$. Read/Spoken as &amp;ldquo;1 is an element of (set) A&amp;rdquo; OR &amp;ldquo;1 is a member of (set) A&amp;rdquo;.&lt;/li>
+&lt;li>Example: Written as $34 \notin A$. Read/Spoken as &amp;ldquo;34 is not an element of (set) A&amp;rdquo; OR &amp;ldquo;34 is not a member of (set) A&amp;rdquo;.&lt;/li>
+&lt;/ul>
+&lt;h3 id="examples">Examples&lt;/h3>
+&lt;p>$A = \{1, 2, 3, 4\}$. $B = \{a, b, c, d\}$. $C = \{cat, dog, cow, fox\}$.&lt;/p>
+&lt;blockquote>
+&lt;p>Note: If you see &amp;ldquo;$\dots$&amp;rdquo; in a set that means that it should be clear what elements come next infinitely (i.e. this is the pattern for the set and it does not end).&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;h2 id="common-sets">&lt;strong>Common Sets&lt;/strong>&lt;/h2>
+&lt;p>These are special sets that are used across mathematics and computer science theory (algorithms).&lt;/p>
+&lt;h3 id="real-numbers">Real numbers&lt;/h3>
+&lt;ul>
+&lt;li>This set has any decimal number of any precision.&lt;/li>
+&lt;li>Symbol: $\mathbb{R}$&lt;/li>
+&lt;li>Examples: 1.0, 388.09384, 3.1415, -1005.6400009&lt;/li>
+&lt;/ul>
+&lt;h3 id="natural-numbers">Natural numbers&lt;/h3>
+&lt;ul>
+&lt;li>This set has the counting numbers that you use everyday. Depending on context, they may start with 0 or 1, so be careful.&lt;/li>
+&lt;li>Symbol: $\mathbb{N}$&lt;/li>
+&lt;li>Example: $\{0, 1, 2, 3, 4, \dots\}$&lt;/li>
+&lt;/ul>
+&lt;h3 id="integers">Integers&lt;/h3>
+&lt;ul>
+&lt;li>This set has any positive or negative whole number.&lt;/li>
+&lt;li>Symbol: $\mathbb{Z}$&lt;/li>
+&lt;li>Example: $\{\dots, -3, -2, -1, 0, 1, 2, 3, \dots\}$&lt;/li>
+&lt;/ul>
+&lt;h3 id="rational-numbers">Rational numbers&lt;/h3>
+&lt;ul>
+&lt;li>This set has the result of dividing any two integers, but not 0 in the deminator.&lt;/li>
+&lt;li>Symbol: $\mathbb{Q}$&lt;/li>
+&lt;li>Examples: $\frac{3}{2}, \frac{2}{4}, \frac{-24}{97}$&lt;/li>
+&lt;/ul>
+&lt;h3 id="empty-set">Empty set&lt;/h3>
+&lt;ul>
+&lt;li>This is the set that has no elements in it.&lt;/li>
+&lt;li>Symbol: $\emptyset$ OR $\{\}$&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="cardinality">&lt;strong>Cardinality&lt;/strong>&lt;/h2>
+&lt;h3 id="defintion">Defintion&lt;/h3>
+&lt;p>The size/length of the set.&lt;/p>
+&lt;h3 id="notation">Notation&lt;/h3>
+&lt;p>Vertical bars around the name of the set.&lt;/p>
+&lt;h3 id="examples-1">Examples&lt;/h3>
+&lt;ul>
+&lt;li>Let $A = \{1, 2, 3, 4\}$. The cardinality of set $A = |A| = 4$.&lt;/li>
+&lt;li>Let $B = \{A, D, G, N, I, Y\}$. The cardinality of set $B = |B| = 6$.&lt;/li>
+&lt;/ul>
+&lt;p>Some sets are considered countable and some are considered uncountable. Simply, a set is countable if you can use the natural numbers to count the set in question. A set is uncountable if you cannout use the natural numbers to count it. There are also finite and infinite sets. A set is infinite is it has infinitely many elements and finite if it has a finite number of elements.&lt;/p>
+&lt;hr>
+&lt;h2 id="subsets">&lt;strong>Subsets&lt;/strong>&lt;/h2>
+&lt;h3 id="definition">Definition&lt;/h3>
+&lt;p>One set is a subset of another if all of the elements of one set can be found in the other.&lt;/p>
+&lt;h3 id="notation-1">Notation&lt;/h3>
+&lt;p>$A \subset B$ OR $A \subseteq B$. The &amp;ldquo;$\subset$&amp;rdquo; symbol is called &amp;ldquo;proper subset&amp;rdquo; and the &amp;ldquo;$\subseteq$&amp;rdquo; is called &amp;ldquo;subset&amp;rdquo;.&lt;/p>
+&lt;blockquote>
+&lt;p>Note: There is a little line under the symbol in the second example. This subtle difference between the two symbols is similar to $&amp;lt;$ and $\le$.&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="example-of-proper-subset">Example of proper subset&lt;/h3>
+&lt;p>Let $A = \{1, 2, 3, 4\}$ and let $B = \{1, 2, 3, 4, 5, 6, 7, 8\}$. In this case, $A \subset B$ because all of the elements in set $A$ can be found in set $B$, but $B$ has some elements that $A$ does not. That is how it is written, but when it is read/spoken, you say &amp;ldquo;(set) $A$ is a proper subset of (set) $B$&amp;rdquo;.&lt;/p>
+&lt;h3 id="example-of-subset">Example of subset&lt;/h3>
+&lt;p>Let $A = \{1, 2, 3, 4\}$ and let $B = \{1, 2, 3, 4\}$. In this case, $A \subseteq B$ because all of the elements in set $A$ can be found in set $B$ and the two sets happen to be the same set. That is how it is written, but when it is read/spoken, you say &amp;ldquo;(set) $A$ is a subset of (set) $B$&amp;rdquo;.&lt;/p>
+&lt;h3 id="visually">Visually&lt;/h3>
+&lt;div class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 410px">
+&lt;img class="card-img-top" src="https://hilalmorrar.com/ucsc-guide/ucsc-guide/docs/majorguides/computerscience/discretemath/settheory/subset_hu11dc0954674be859503d2068ba120b01_11467_400x450_fill_catmullrom_smart1_2.png" width="400" height="450">
+&lt;div class="card-body px-0 pt-2 pb-0">
+&lt;p class="card-text">
+A visual example of subsets and proper subsets
+&lt;small class="text-muted">&lt;br/>Photo: OnlineMathLearning.com&lt;/small>&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;p>(Click &lt;a href="subset.png">here&lt;/a> to download the image if you want to save it for safe keeping.)&lt;/p>
+&lt;blockquote>
+&lt;p>Note: The $U$ in the top left corner stands for the &amp;ldquo;universive of discourse&amp;rdquo;. You can think of this as the &amp;ldquo;domain&amp;rdquo; of the problem, where the universe has all possible values in a given problem.&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;h2 id="power-set">&lt;strong>Power Set&lt;/strong>&lt;/h2>
+&lt;h3 id="definition-1">Definition&lt;/h3>
+&lt;p>A power set of a set is the set of all possible subsets that can be made from the original set.&lt;/p>
+&lt;h3 id="notation-2">Notation&lt;/h3>
+&lt;p>$\mathcal{P}(A)$&lt;/p>
+&lt;h3 id="example">Example&lt;/h3>
+&lt;p>Let $A = \{1, 2, 3\}$. $\mathcal{P}(A) = { {}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3} }$.&lt;/p>
+&lt;blockquote>
+&lt;p>Note: A quick check to make sure you didn&amp;rsquo;t miss a set when making the power set is to count the number of sets in your power set and see if it equals $2^{|A|}$. But this isn&amp;rsquo;t a complete/exhaustive check, so make sure you get every combination.&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>Note: The empty set is a subset of any set and therfore in every power set.&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;h2 id="common-setlogic-operations">&lt;strong>Common Set/Logic Operations&lt;/strong>&lt;/h2>
+&lt;p>You can perform operations on sets. These operations are fairly common in discete math, algorithms, and logic/hardware. Some of the styles of notation may differ across these fields, but they all mean the same.&lt;/p>
+&lt;h3 id="unionor">Union/OR&lt;/h3>
+&lt;p>This operation is similar to an &amp;ldquo;addition&amp;rdquo; of the sets involved, like a combination. Combine the sets involved into one big set, but no duplicates. In set theory it is called &amp;ldquo;union&amp;rdquo; and in logic/hardware it is called &amp;ldquo;OR&amp;rdquo;.&lt;/p>
+&lt;h4 id="notation-3">Notation&lt;/h4>
+&lt;p>Set theory: $A \cup B$. Logic/hardware: $A \lor B$.&lt;/p>
+&lt;h4 id="example-1">Example&lt;/h4>
+&lt;p>Let $A = \{1, 2, 3\}$ and let $B = \{3, 4, 5, 6\}$. The union of sets $A$ and $B$ is $\{1, 2, 3, 4, 5, 6\}$.&lt;/p>
+&lt;hr>
+&lt;h3 id="intersectionand">Intersection/AND&lt;/h3>
+&lt;p>This operation is finding the commonalities bewtween the sets involved. In set theory it is called &amp;ldquo;intersection&amp;rdquo; and in logic/hardware it is called &amp;ldquo;AND&amp;rdquo;.&lt;/p>
+&lt;h4 id="notation-4">Notation&lt;/h4>
+&lt;p>Set theory: $A \cap B$. Logic/hardware: $A \land B$.&lt;/p>
+&lt;h4 id="example-2">Example&lt;/h4>
+&lt;p>Let $A = \{1, 2, 3\}$ and let $B = \{3, 4, 5, 1\}$. The intersection of set $A$ and $B$ is $\{1, 3\}$.&lt;/p>
+&lt;hr>
+&lt;h3 id="complementnot">Complement/NOT&lt;/h3>
+&lt;p>In set theory, this operation is finding what is &lt;em>not&lt;/em> in the set in question, but in logic/hardware, this operation is taking the opposite of a True/False value. This operation can be done in addition to other operations on one or more sets. It is also called a &amp;ldquo;negation&amp;rdquo;.&lt;/p>
+&lt;h4 id="notation-5">Notation&lt;/h4>
+&lt;p>Set theory: $A^C$. Logic/hardware: $\bar{A}$ or $A'$, or $\sim A$.&lt;/p>
+&lt;h4 id="examples-2">Examples&lt;/h4>
+&lt;p>Let the universe $U = \{1, 2, 3, 4, 5, 6\}$. Let $A = \{1, 2, 3\}$. Let $B = \{3, 4, 5, 1\}$.&lt;/p>
+&lt;ul>
+&lt;li>$A^C = \{4, 5, 6\}$&lt;/li>
+&lt;li>$\overline{A \cup B} = \{6\}$&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>Note: In the last example, I used a very famous law/rule called DeMorgan&amp;rsquo;s Law, which will be left up to you to Google (very simple, but incredibly powerful trick). In short, DeMorgan&amp;rsquo;s Law lets you move a negation in and out of parantheses while maintaining the correctness of the answer.&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="visually-1">Visually&lt;/h3>
+&lt;div class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 410px">
+&lt;img class="card-img-top" src="https://hilalmorrar.com/ucsc-guide/ucsc-guide/docs/majorguides/computerscience/discretemath/settheory/set_operations_hu092d676f11edc2cd5600dd2c047049ec_51782_400x460_fill_catmullrom_smart1_2.png" width="400" height="460">
+&lt;div class="card-body px-0 pt-2 pb-0">
+&lt;p class="card-text">
+A visual example of subsets and proper subsets
+&lt;small class="text-muted">&lt;br/>Photo: OnlineMathLearning.com&lt;/small>&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;p>(Click &lt;a href="set_operations.png">here&lt;/a> to download the image if you want to save it for safe keeping.)&lt;/p>
+&lt;blockquote>
+&lt;p>Note: Venn Diagrams are &lt;strong>incredibly&lt;/strong> useful to visualize some of the set operations in more complicated problems that involve more than 2 simple, small sets. So if you are having trouble wrapping your head around a problem or operation when solving a problem, draw it out!&lt;/p>
+&lt;/blockquote></description></item></channel></rss>
