@@ -2,7 +2,7 @@
 title: "Compilation"
 linkTitle: "Compilation"
 author: "Ben Grant"
-date: 2021-10-08T12:06:29-07:00
+date: 2021-10-12T00:00:00-07:00
 weight: 1
 icon:
 draft: false
