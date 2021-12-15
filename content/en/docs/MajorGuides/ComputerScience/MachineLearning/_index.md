@@ -3,7 +3,7 @@ title: "Intro to Machine Learning"
 linkTitle: "Intro to Machine Learning"
 weight: 1
 icon:
-draft: false
+draft: true
 description: >
   Introduction to Machine Learning at UCSC (CSE 144).
 ---
