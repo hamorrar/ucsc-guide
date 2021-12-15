@@ -565,7 +565,39 @@ a = 4, b = 1: hypot = 4.123105625617661, my_hypot = 4.123105625617661, diff = 0.
 a = 4, b = 2: hypot = 4.472135954999580, my_hypot = 4.472135954999580, diff = 0.000000000000000
 a = 4, b = 3: hypot = 5.000000000000000, my_hypot = 5.000000000000000, diff = 0.000000000000000
 a = 4, b = 4: hypot = 5.656854249492381, my_hypot = 5.656854249492381, diff = 0.000000000000000
-&lt;/code>&lt;/pre>&lt;p>It all worked! Make handles building multiple binaries very well—notice how it only built &lt;code>mathlib.c&lt;/code> once, even though it is needed by both binaries. Also, this Makefile compiles both binaries by default (thanks to the &lt;code>all&lt;/code> target), but you can also compile only one binary with &lt;code>make hypot&lt;/code> or &lt;code>make hypot-test&lt;/code>.&lt;/p></description></item><item><title>Docs: Proofs</title><link>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/discretemath/proofs/</link><pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate><guid>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/discretemath/proofs/</guid><description>
+&lt;/code>&lt;/pre>&lt;p>It all worked! Make handles building multiple binaries very well—notice how it only built &lt;code>mathlib.c&lt;/code> once, even though it is needed by both binaries. Also, this Makefile compiles both binaries by default (thanks to the &lt;code>all&lt;/code> target), but you can also compile only one binary with &lt;code>make hypot&lt;/code> or &lt;code>make hypot-test&lt;/code>.&lt;/p></description></item><item><title>Docs: What Is Version Control?</title><link>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/git/fundamentals/what_is_version_control/</link><pubDate>Wed, 15 Sep 2021 00:00:00 +0000</pubDate><guid>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/git/fundamentals/what_is_version_control/</guid><description>
+&lt;p>Before delving into the specifics of Git, we must first explain what version control is because Git is a version control system. This article will explain what version control is and what&amp;rsquo;re its benefits.&lt;/p>
+&lt;h2 id="definition">Definition&lt;/h2>
+&lt;p>Anything from text documents to software go through cycles of development and revisions to get to the current place that they&amp;rsquo;re at. Much of the time, multiple people are modifying different things at once or even making conflicting changes, resulting in a non-linear series of changes.&lt;/p>
+&lt;p>How all these issues are dealt with depends on the version control system being used. In essence, anything that allows people to manage changes done to something is a version control system. There are many applications of version control in our daily lives outside of programming. One example of this is being able to check version history and revert changes in Google Docs.&lt;/p>
+&lt;div class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 294px">
+&lt;img class="card-img-top" src="../version_control_example.jpg" width="294" height="497">
+&lt;div class="card-body px-0 pt-2 pb-0">
+&lt;p class="card-text">
+How Google Docs implements version control
+&lt;small class="text-muted">&lt;br>Photo: docs.google.com&lt;/small>
+&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;p>We will dive into how Git implements version control in the next article, but for now, we&amp;rsquo;ll talk about its benefits when it comes to developing software.&lt;/p>
+&lt;p>​&lt;/p>
+&lt;hr>
+&lt;h2 id="benefits-for-developing-software">Benefits for developing software&lt;/h2>
+&lt;p>Significant pieces of software are virtually never developed completely alone and undergo countless changes. This results in a potentially complicated net of changes which must be kept track of to do things like revert a specific set of changes or keep track of who did what. It is because of this that version control is vital for software development.&lt;/p>
+&lt;div class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 500px">
+&lt;img class="card-img-top" src="../branch-graph-example.png" width="835" height="622">
+&lt;div class="card-body px-0 pt-2 pb-0">
+&lt;p class="card-text">
+A graph of changes to a project over time.
+&lt;small class="text-muted">&lt;br>Graph: Made using the Git Graph Visual Studio Code extension&lt;/small>
+&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;p>Whatever field of computer science you end up doing, you will always encounter the usage of version control in some way or another, which is why lower division computer science courses such as CSE 12/L and CSE 13 make you get into the habit of using Git. Although the projects you do in those courses will be alone and not with other contributors, it is still extremely useful for reverting bad changes, seeing what was done when, and for other reasons that will be explained in the next article.&lt;/p>
+&lt;p>​&lt;/p>
+&lt;hr>
+&lt;p>​&lt;/p>
+&lt;p>Now that we&amp;rsquo;ve covered what version control is, the next article will explain what Git does to implement a version control system to reap the benefits of using it as explained above.&lt;/p></description></item><item><title>Docs: Proofs</title><link>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/discretemath/proofs/</link><pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate><guid>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/discretemath/proofs/</guid><description>
 &lt;p>The proof building skills you gain from this class will be foundational for your success in CSE 102. They may look intimidating but the most comforting advice I have received from my teachers and tutors is that notation is half the problem. Once you work your way through the notations in the problem, you can start to understand what you are looking at and think of approaches to solutions. The following are just previews into common proof techniques from CSE 16 and 102.&lt;/p>
 &lt;blockquote>
 &lt;p>Note: Sometimes professors say which proof technique to use and sometimes it&amp;rsquo;s not explicitly stated, so you will need to pick a valid proof technique that can get you the desired result. So these are just good skills to keep in mind when creating a proof. Don&amp;rsquo;t worry - proof get a little easier and make more sense with practice!&lt;/p>
@@ -704,7 +736,7 @@ A reference chart for the rules of inference.
 &lt;p>In inductive proofs, it is a similar flow: the first &amp;ldquo;step in the stair case&amp;rdquo; is a mathematical expression that must be established as true. Then you use that proven statement to help you prove each next step.&lt;/p>
 &lt;p>There are two types of induction: weak and strong.&lt;/p>
 &lt;h3 id="weak-induction">Weak Induction&lt;/h3>
-&lt;p>Putting the staircase analogy formally, $p(n) \rightarrow p(n+1)$, where $n \in \mathbb{N}$.&lt;/p></description></item><item><title>Docs: Basic Git Operations</title><link>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/git/basics/basic_git_operations/</link><pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate><guid>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/git/basics/basic_git_operations/</guid><description/></item><item><title>Docs: What Is Version Control?</title><link>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/git/fundamentals/what_is_version_control/</link><pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate><guid>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/git/fundamentals/what_is_version_control/</guid><description/></item><item><title>Docs: Logic</title><link>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/discretemath/logic/</link><pubDate>Wed, 08 Sep 2021 00:00:00 +0000</pubDate><guid>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/discretemath/logic/</guid><description>
+&lt;p>Putting the staircase analogy formally, $p(n) \rightarrow p(n+1)$, where $n \in \mathbb{N}$.&lt;/p></description></item><item><title>Docs: Basic Git Operations</title><link>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/git/basics/basic_git_operations/</link><pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate><guid>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/git/basics/basic_git_operations/</guid><description/></item><item><title>Docs: Logic</title><link>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/discretemath/logic/</link><pubDate>Wed, 08 Sep 2021 00:00:00 +0000</pubDate><guid>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/discretemath/logic/</guid><description>
 &lt;p>The knowledge you gain about logic from Discrete Math (CSE 16) and Computer Systems and Assembly Language (CSE 12) will be some of the most commonly used skills in your career because of how frequently we use conditional statements and try to simplify them in code.&lt;/p>
 &lt;h2 id="definitions">Definitions&lt;/h2>
 &lt;ul>
@@ -1009,7 +1041,101 @@ A visual example of subsets and proper subsets
 &lt;li>&lt;a href="https://www.places4students.com/Places/School?SchoolID=%2f7UnHPDakTw%3d">Places4Students&lt;/a> - place to find rentals and housemates&lt;/li>
 &lt;li>&lt;a href="https://deanofstudents.ucsc.edu/basic-needs/off-campus-housing-legal-services.html">Legal Services &amp;amp; Consulation&lt;/a> - free access to an attorney for UCSC students if you have legal concerns regarding off campus housing (offered via UCSC Dean of Students)&lt;/li>
 &lt;li>&lt;a href="https://communityrentals.ucsc.edu/renters/before-you-rent/questions-to-ask.html">Community Rentals - Questions to Ask&lt;/a> - questions to ask the landlord&lt;/li>
-&lt;/ul></description></item><item><title>Docs: University Town Center</title><link>https://hilalmorrar.com/ucsc-guide/docs/housing/offcampus/utc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hilalmorrar.com/ucsc-guide/docs/housing/offcampus/utc/</guid><description/></item><item><title>Docs: How Git Works</title><link>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/git/fundamentals/how_git_works/</link><pubDate>Thu, 09 Sep 2021 00:00:00 +0000</pubDate><guid>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/git/fundamentals/how_git_works/</guid><description/></item><item><title>Docs: Contribution Guidelines</title><link>https://hilalmorrar.com/ucsc-guide/docs/contribution_guidelines/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hilalmorrar.com/ucsc-guide/docs/contribution_guidelines/</guid><description>
+&lt;/ul></description></item><item><title>Docs: University Town Center</title><link>https://hilalmorrar.com/ucsc-guide/docs/housing/offcampus/utc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hilalmorrar.com/ucsc-guide/docs/housing/offcampus/utc/</guid><description/></item><item><title>Docs: How Git Works</title><link>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/git/fundamentals/how_git_works/</link><pubDate>Wed, 15 Sep 2021 00:00:00 +0000</pubDate><guid>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/git/fundamentals/how_git_works/</guid><description>
+&lt;p>In the last article, we talked about what version control was. Now, we&amp;rsquo;re going to cover how Git implements it.&lt;/p>
+&lt;p>Note: As stated in &lt;a href="../">Fundamentals&lt;/a>, it&amp;rsquo;s okay if you don&amp;rsquo;t understand the stuff covered in here immediately. Read through the article then go to &lt;a href="../../basics/">Basics&lt;/a>, rereading this article as necessary.&lt;/p>
+&lt;h2 id="fundamentals-of-git">Fundamentals of Git&lt;/h2>
+&lt;p>Git is a version control system which allows you to log changes made, reasons behind them, push these changes to replicate it in an external place, pull in changes from that external place to other places like another device, and more.&lt;/p>
+&lt;h2 id="repositories-repos">Repositories (Repos)&lt;/h2>
+&lt;p>A repository, or repo, is a collection files and directories (folders) in which changes can be made. Most Git repos are used for storing a unit of software, like a program. Repos stored in different places are called different things. A local repo is one that is on your own computer/device while a remote repo is one that is on an external server. These external servers can be hosted by various places. For example, UCSC hosts a GitLab server, which implements Git. However, they can also be places like GitHub or GitLab&amp;rsquo;s own servers rather than something self-hosted like the school&amp;rsquo;s servers on.&lt;/p>
+&lt;div class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 500px">
+&lt;img class="card-img-top" src="../git-bash-console.png" width="581" height="476">
+&lt;div class="card-body px-0 pt-2 pb-0">
+&lt;p class="card-text">
+An example of how to interact with a local repository.
+&lt;small class="text-muted">&lt;br>Photo: Git Bash Windows console&lt;/small>
+&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;div class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 1625px">
+&lt;img class="card-img-top" src="../burdbot-repo.png" width="1625" height="631">
+&lt;div class="card-body px-0 pt-2 pb-0">
+&lt;p class="card-text">
+An example of a remote repository on Github.
+&lt;small class="text-muted">&lt;br>Photo: github.com&lt;/small>
+&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;h3 id="creating-repositories">Creating repositories&lt;/h3>
+&lt;p>We won&amp;rsquo;t get into exactly how to do anything until &lt;a href="../../basics/basic_git_operations">Basic Git Operations&lt;/a>, but we&amp;rsquo;ll describe the the process for now. There are two main ways to create a local repo. The first is to clone it from an existing repo, usually a remote one. The other is to initialize it using the command line. How to create a remote repo depends on where the repo is stored. When it comes to a repo for classes, they will generally be pre-made on the school&amp;rsquo;s GitLab server and shared with you. However, you can also create repos by navigating to the website and using it to create one, which is also the same way to create a remote repo on sites like &lt;a href="https://github.com">GitHub&lt;/a> and &lt;a href="https://gitlab.com/users/sign_in">GitLab&lt;/a>.&lt;/p>
+&lt;h2 id="making-changes-to-repositories">Making changes to repositories&lt;/h2>
+&lt;p>As stated earlier, version control provides a way to track changes made. The way Git implements this is through something called commits, commit history, and branches. Commits made on local repos can be pushed to remote repos so that they&amp;rsquo;re replicated. We&amp;rsquo;ll explain this in further detail in &lt;a href="../../basics/basic_git_operations">Basic Git Operations&lt;/a>, but this system of being able to make local repositories by cloning remote repositories and pushing changes to transfer them to a remote repo creates redundancies so that your changes persist even if your device&amp;rsquo;s HDD or SSD fail.&lt;/p>
+&lt;h3 id="commits">Commits&lt;/h3>
+&lt;p>Commits are a unit of changes to a file or batch of files labelled with a title and description. In Git, every individual commit stores changes made from the previous commit, building on top of them instead of storing the entire repo&amp;rsquo;s state. We will go over how to create them in &lt;a href="../../basics/basic_git_operations">Basic Git Operations&lt;/a>.&lt;/p>
+&lt;h3 id="commit-history">Commit History&lt;/h3>
+&lt;p>As the name suggests, commit history is made up of past commits. Because each commit builds off of the last one, the visible commit history must be linear within a given branch (explained below) so it leads from the original state to the current state.&lt;/p>
+&lt;div class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 600px">
+&lt;img class="card-img-top" src="../burdbot-repo-commit-log.png" width="786" height="976">
+&lt;div class="card-body px-0 pt-2 pb-0">
+&lt;p class="card-text">
+An example of the commit history of a repo.
+&lt;small class="text-muted">&lt;br>Photo: Git Bash Windows console&lt;/small>
+&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;h3 id="branches">Branches&lt;/h3>
+&lt;p>By default, all repos created have one branch, the main or master branch. A branch consists of a series of commits and new ones can be created by branching off from another branch. There are many operations that can be done with branches, but we won&amp;rsquo;t be getting into them because they&amp;rsquo;re not needed for the lower division courses.&lt;/p>
+&lt;h2 id="getting-git-on-a-local-computer">Getting Git on a local computer&lt;/h2>
+&lt;p>To actually use Git on your computer, you first need to get it. If you&amp;rsquo;re in or going into CSE 12/L, you&amp;rsquo;ll need to use Git for Windows. If you&amp;rsquo;re in or going into CSE 13, you&amp;rsquo;ll be using Ubuntu. Ubuntu and MacOS in most cases should both come with Git by default. However, if you&amp;rsquo;re on Windows, this isn&amp;rsquo;t the case. If the &lt;code>Git&lt;/code> command isn&amp;rsquo;t available via the command line, download it from &lt;a href="https://git-scm.com/downloads">here&lt;/a>.&lt;/p>
+&lt;h2 id="making-an-account-for-remote-repositories">Making an account for remote repositories&lt;/h2>
+&lt;p>Now that we&amp;rsquo;ve covered what repos and commits are, it&amp;rsquo;s time to do some set-up prior to actually using Git.&lt;/p>
+&lt;p>To make an account for school-related remote repos which you&amp;rsquo;ll use in many computer science classes, go to the &lt;a href="https://git.ucsc.edu">school&amp;rsquo;s self-hosted GitLab site&lt;/a>. When creating a school account, do not use another site like GitLab directly or GitHub. Use your school email for the email, Cruz ID for your username, and make a password to register.&lt;/p>
+&lt;p>If you want to create an account on a site hosting remote repositories to put personal projects in to using Git, use a site like &lt;a href="https://github.com">GitHub&lt;/a> or &lt;a href="https://gitlab.com/users/sign_in">GitLab&lt;/a>.&lt;/p>
+&lt;hr>
+&lt;p>Once you create an account, go to the next article, which will explain how to set up an SSH key for Git so that you can push and pull changes to/from the remote repository without having to authenticate using your password.&lt;/p>
+&lt;p>Note: There are a lot more features Git has to provide apart from the ones listed in this article. As mentioned in &lt;a href="../../">Git&lt;/a>, the primary purpose of these articles is have enough knowledge about Git to get through the lower division courses.&lt;/p></description></item><item><title>Docs: SSH Keys</title><link>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/git/fundamentals/ssh_keys/</link><pubDate>Wed, 15 Sep 2021 00:00:00 +0000</pubDate><guid>https://hilalmorrar.com/ucsc-guide/docs/majorguides/computerscience/git/fundamentals/ssh_keys/</guid><description>
+&lt;p>In the last article, you got Git on your computer if it wasn&amp;rsquo;t already installed and created an account for Git on either the school&amp;rsquo;s or some other remote repo site. There is one more optional but highly recommended step we must go through before actually using Git, setting up an SSH key.&lt;/p>
+&lt;h2 id="background">Background&lt;/h2>
+&lt;p>When interacting with a remote repo, you must authenticate yourself so that the remote repo hosts know you really are who you say you are. This is because it would be a huge security flaw if anyone could modify anyone&amp;rsquo;s repo without the proper permissions.&lt;/p>
+&lt;p>There are two protocols that can be used to do this in Git, HTTPS and SSH. In the simplest terms, a protocol is a way something gets done. HTTPS and SSH are both cryptographically secure ways to transmit data from one point to another (the servers hosting the remote repo to your computer and vice-versa in this case) through the Internet. You likely have seen HTTPS before at the beginning of URLs because this is one of the main protocols used to send data from you to a website and vice-versa. The reason why it&amp;rsquo;s recommended to use SSH over HTTPS is that when authenticating over HTTPS, you have to type your username and password of the account you made on the site of the remote repo host, which can be quite inconvenient. This is as opposed to SSH where you&amp;rsquo;re authenticated automatically once you set it up.&lt;/p>
+&lt;p>To do this, you must generate an SSH key pair, one public key and one private key. Afterwards, you must store the keys on your computer, and give the remote repo host a copy of the public key. The private key is sensitive because it&amp;rsquo;s used for authentication purposes so keep it safe and don&amp;rsquo;t give it out.&lt;/p>
+&lt;h2 id="generating-ssh-keys-and-storing-them-on-your-device">Generating SSH keys and storing them on your device&lt;/h2>
+&lt;p>If you&amp;rsquo;re using Windows, open Git Bash. If you&amp;rsquo;re on a Mac or Linux, open Terminal. Then, type &lt;code>ssh-keygen -t RSA -b 4096&lt;/code>. This will generate a public and private SSH key using RSA-4096 as the encryption algorithm.&lt;/p>
+&lt;p>You will then be prompted for where to store the private key file. Press Enter/Return so that it gets stored in the default place. If it&amp;rsquo;s asking whether to overwrite a file called &lt;code>id_rsa&lt;/code> or not, then type N, press enter/return, and skip to the &lt;a href="#giving-the-public-key-to-the-remote-repo-host">Giving the public key to the remote repo host&lt;/a>.&lt;/p>
+&lt;p>After this, you will be prompted to create a passphrase. As an added security measure, SSH private keys can be further protected with a passphrase. However, if you&amp;rsquo;re using a personal computer and it&amp;rsquo;s just for school or personal projects, you can just press enter and leave the passphrase blank because it isn&amp;rsquo;t much of a concern in that case.&lt;/p>
+&lt;p>Now that the public/private key pair is generated, we will now need to give the public key to the remote repo host, allowing us to authenticate automatically.&lt;/p>
+&lt;h2 id="giving-the-public-key-to-the-remote-repo-host">Giving the public key to the remote repo host&lt;/h2>
+&lt;p>This next step depends on what host is being used, such as Gitlab, the school&amp;rsquo;s self-hosted GitLab server, or GitHub, but it&amp;rsquo;s all generally the same process. First, go to your account settings/preferences on the remote repo site. Then, find the settings tab/page for SSH keys.&lt;/p>
+&lt;div class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 700px">
+&lt;img class="card-img-top" src="../ssh-keys-github.png" width="1096" height="840">
+&lt;div class="card-body px-0 pt-2 pb-0">
+&lt;p class="card-text">
+What the SSH Keys section in the settings for GitHub look like
+&lt;small class="text-muted">&lt;br>Photo: github.com&lt;/small>
+&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;div class="card rounded p-2 td-post-card mb-4 mt-4" style="max-width: 900px">
+&lt;img class="card-img-top" src="../ssh-keys-gitlab.png" width="1594" height="854">
+&lt;div class="card-body px-0 pt-2 pb-0">
+&lt;p class="card-text">
+What the SSH Keys section in the settings for GitLab look like
+&lt;small class="text-muted">&lt;br>Photo: gitlab.com&lt;/small>
+&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;p>[picture of GitHub SSH settings]
+[picture of GitLab SSH settings]&lt;/p>
+&lt;p>Once the page is open, navigate to the user directory by typing &lt;code>cd ~&lt;/code> into Git Bash on Windows or Terminal for Mac and Linux.&lt;/p>
+&lt;p>Then, if you&amp;rsquo;re on Windows, type &lt;code>cat id_rsa.pub | clip&lt;/code>.&lt;/p>
+&lt;p>If you&amp;rsquo;re in Mac, type
+&lt;code>cat id_rsa.pub | pbcopy&lt;/code>.&lt;/p>
+&lt;p>If you&amp;rsquo;re on Linux, then type
+&lt;code>cat id_rsa.pub&lt;/code>
+and find the shortcut to copy the output from Terminal, including the lines marking the beginning and end of the key.&lt;/p>
+&lt;p>It is extremely important that you type it &lt;strong>with&lt;/strong> the &lt;code>.pub&lt;/code> extension to copy the public key. Once it&amp;rsquo;s copied paste the key into the appropriate text-box on the SSH key settings page in your browser, setting the expiration date to never if there is an option for that and give the key a title telling what device the key is for. When you&amp;rsquo;ve typed all the information, add the key.&lt;/p>
+&lt;hr>
+&lt;p>This concludes this group of articles. The next group of articles, &lt;a href="../../basics/">Basics&lt;/a>, will talk about how to do many of the operations that were described in &lt;a href="../how_git_works/">How Git Works&lt;/a>.&lt;/p></description></item><item><title>Docs: Contribution Guidelines</title><link>https://hilalmorrar.com/ucsc-guide/docs/contribution_guidelines/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://hilalmorrar.com/ucsc-guide/docs/contribution_guidelines/</guid><description>
 &lt;p>Hello and thank you for wanting to contribute to the project! All experience levels are welcome! Please take a look at &lt;code>HELPWANTED.md&lt;/code> to see items that are outside of the current team&amp;rsquo;s expertise that need help to expand the scope of the project.&lt;/p>
 &lt;p>The Unofficial UCSC Student Guide is an open source project and welcome to patches, contributions, and improvements!&lt;/p>
 &lt;p>The Guide lives on &lt;a href="https://github.com/hamorrar/ucsc-guide">GitHub&lt;/a>. You can view all of its source code there.&lt;/p>
